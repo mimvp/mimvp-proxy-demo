@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-transform" /> 
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="applicable-device" content="pc,mobile" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="renderer" content="webkit" />
+<title>米扑代理之编程示例</title>
+<meta name="Keywords" content="米扑代理,p代理,代理ip,免费代理,免费代理ip,米扑科技,http代理,https代理,socks代理,代理ip购买,free proxy,爬虫代理,稳定代理,高匿代理,匿名代理,HTTP,HTTPS,SOCKS4,SOCKS5,QQ代理,国内外代理,稳定代理,高匿代理,高匿代理ip,爬虫代理ip,刷单代理,刷单代理ip,投票代理ip,私密代理ip,独享代理,独享代理ip,高速http代理,免费代理ip,代理服务器">
+<meta name="description" content="米扑代理，全球代理服务领导品牌，服务于1000多家企业客户，专业为您提供高品质代理IP，每天可免费提取HTTP、HTTPS、Socks代理，覆盖120多个国家、中国34个省市，BAT技术团队保证代理IP质量，最新免费代理ip每天实时更新，就找米扑代理！">
+<meta name="author" content="米扑科技" />
+<meta name="version" content="mimvp-proxy-demo-1.0" />
+<meta name="copyright" content="2009-<?php echo date('Y');?> by mimvp.com">
+
+<style>
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 14px/1 'Open Sans', sans-serif;
+  color: #555;
+}
+
+h1 {
+  padding: 10px 10px;
+  font-weight: bold;/* 
+  color: #b22222; */
+}
+
+p {
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+main {
+	width: 100%;
+	max-width: 1200px;
+	padding: 10px;
+	margin: 0 auto;
+	background: #eee;
+}
+
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+input {
+  display: none;
+}
+
+label {
+  width: 154px;
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 5px;
+  font-size: 16px;
+  text-align: center;
+  color: #555;
+  border: 2px solid #ddd;/* 
+  border-bottom: 2px solid transport; */
+}
+
+
+label:hover {
+  color: #f00;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: #f00;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-left: 2px solid orange;
+  border-right: 2px solid orange;
+  border-bottom: 2px solid #eee;
+}
+
+#tab-autohotkey:checked ~ #content-autohotkey,
+#tab-csharp:checked ~ #content-csharp,
+#tab-delphi:checked ~ #content-delphi,
+#tab-go:checked ~ #content-go,
+#tab-groovy:checked ~ #content-groovy,
+#tab-httpie:checked ~ #content-httpie,
+#tab-java:checked ~ #content-java,
+#tab-nodejs:checked ~ #content-nodejs,
+#tab-phantomjs:checked ~ #content-phantomjs,
+#tab-perl:checked ~ #content-perl,
+#tab-php:checked ~ #content-php,
+#tab-python2:checked ~ #content-python2,
+#tab-python3:checked ~ #content-python3,
+#tab-python-pyspider:checked ~ #content-python-pyspider,
+#tab-python-requests:checked ~ #content-python-requests,
+#tab-python-scrapy:checked ~ #content-python-scrapy,
+#tab-ruby:checked ~ #content-ruby,
+#tab-selenium-java:checked ~ #content-selenium-java,
+#tab-selenium-python:checked ~ #content-selenium-python,
+#tab-shell:checked ~ #content-shell,
+#tab-yiyuyan:checked ~ #content-yiyuyan {
+  display: block;
+}
+
+@media screen and (max-width: 960px) {
+}
+@media screen and (max-width: 320px) {
+}
+
+</style>
+<script src="/js/prism-default.js"></script>
+<link href="/css/prism-default.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<main>
+	  <input id="tab-autohotkey" type="radio" name="tabs" checked>
+	  <label for="tab-autohotkey">AutohotKey</label>
+	
+	  <input id="tab-csharp" type="radio" name="tabs">
+	  <label for="tab-csharp">C#</label>
+	
+	  <input id="tab-delphi" type="radio" name="tabs">
+	  <label for="tab-delphi">Delphi</label>
+	
+	  <input id="tab-go" type="radio" name="tabs">
+	  <label for="tab-go">Go</label>
+	
+	  <input id="tab-groovy" type="radio" name="tabs" checked>
+	  <label for="tab-groovy">Groovy</label>
+	
+	  <input id="tab-httpie" type="radio" name="tabs">
+	  <label for="tab-httpie">HTTPie</label>
+	
+	  <input id="tab-java" type="radio" name="tabs">
+	  <label for="tab-java">Java</label>
+	
+	
+	  <input id="tab-nodejs" type="radio" name="tabs">
+	  <label for="tab-nodejs">NodeJS</label>
+	
+	  <input id="tab-phantomjs" type="radio" name="tabs" checked>
+	  <label for="tab-phantomjs">PhantomJS</label>
+	
+	  <input id="tab-perl" type="radio" name="tabs">
+	  <label for="tab-perl">Perl</label>
+	
+	  <input id="tab-php" type="radio" name="tabs">
+	  <label for="tab-php">PHP</label>
+	
+	  <input id="tab-python2" type="radio" name="tabs">
+	  <label for="tab-python2">Python2</label>
+	
+	  <input id="tab-python3" type="radio" name="tabs">
+	  <label for="tab-python3">Python3</label>
+	
+	  <input id="tab-python-pyspider" type="radio" name="tabs">
+	  <label for="tab-python-pyspider">Python pyspider</label>
+	
+	
+	
+	  <input id="tab-python-requests" type="radio" name="tabs">
+	  <label for="tab-python-requests">Python requests</label>
+	
+	  <input id="tab-python-scrapy" type="radio" name="tabs">
+	  <label for="tab-python-scrapy">Python scrapy</label>
+	
+	  <input id="tab-ruby" type="radio" name="tabs" checked>
+	  <label for="tab-ruby">Ruby</label>
+	
+	  <input id="tab-selenium-java" type="radio" name="tabs">
+	  <label for="tab-selenium-java">Selenium Java</label>
+	
+	  <input id="tab-selenium-python" type="radio" name="tabs">
+	  <label for="tab-selenium-python">Selenium Python</label>
+	
+	  <input id="tab-shell" type="radio" name="tabs">
+	  <label for="tab-shell">Shell curl wget</label>
+	
+	  <input id="tab-yiyuyan" type="radio" name="tabs">
+	  <label for="tab-yiyuyan">易语言</label>
+
+
+  <section id="content-autohotkey">
+  	<h1>AutohotKey 示例</h1>
+    <pre><code class="language-perl"># AutohotKey 支持 http
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2016-11-29
+
+
+HTTPREQUEST_PROXYSETTING_PROXY := 2
+HTTPREQUEST_SETCREDENTIALS_FOR_PROXY := 1
+
+;~ 代理服务器
+proxy_http := "138.68.165.154:3128"
+
+;~ 要访问的目标页面
+mimvp_url := "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+
+whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+whr.Open("GET", mimvp_url, true)
+
+;~ 模拟curl的ua，方便测试
+whr.SetRequestHeader("User-Agent", "curl/7.41.0")
+
+;~ 设置代理服务器
+whr.SetProxy(HTTPREQUEST_PROXYSETTING_PROXY, proxy_http)
+
+;~ 设置代理隧道验证信息
+whr.SetCredentials('mimvp-user', 'mimvp-pass', HTTPREQUEST_SETCREDENTIALS_FOR_PROXY)
+
+whr.Send()
+whr.WaitForResponse()
+
+MsgBox % whr.ResponseText   
+    </code></pre>
+  </section>
+
+  <section id="content-csharp">
+  	<h1>C# 示例</h1>
+    <pre><code class="language-csharp">/**
+C# 支持 http、https
+
+米扑代理示例：
+http://proxy.mimvp.com/demo2.php
+
+米扑代理购买：
+http://proxy.mimvp.com
+
+mimvp.com
+2015-11-09
+*/
+ 
+using System;
+using System.IO;
+using System.Net;
+using System.Text;
+ 
+namespace ConsoleApplication1
+{
+    class Program
+    {
+    	// 代码级代理
+        public static void Main(string[] args)
+        {
+            System.Net.WebProxy proxy = new WebProxy("218.21.230.156", 443);        // "107.150.96.188", 8080
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://proxy.mimvp.com/exist.php");
+            request.Proxy = proxy;
+            using (WebResponse response = request.GetResponse())
+            {
+                using (TextReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                        Console.WriteLine(line);
+                }
+            }
+        }
+ 
+ 		// 系统变量级代理
+        public static void Main2()
+        {
+            // your code goes here
+            System.Net.WebProxy proxy = new WebProxy("107.150.96.188", 8080);
+            System.Net.HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://proxy.mimvp.com/exist.php");
+            req.Proxy = proxy;
+            req.Timeout = 30 * 1000;
+            System.Net.HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            Encoding bin = Encoding.GetEncoding("UTF-8");
+            StreamReader reader = new StreamReader(resp.GetResponseStream(), bin);
+            string str = reader.ReadToEnd();
+            Console.WriteLine(str);
+         
+            reader.Close();
+            reader.Dispose();
+        }
+    }
+}
+    </code></pre>
+  </section>
+
+  <section id="content-delphi">
+    <h1>Delphi 示例</h1>
+    <pre><code class="language-delphi"># Delphi 支持 http
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2016-11-25
+
+
+interface
+    uses
+        Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+        Dialogs, StdCtrls, IDHTTP;
+
+    type
+        TForm1 = class(TForm)
+            Button1: TButton;
+            procedure Button1Click(Sender: TObject);
+        private
+            { Private declarations }
+        public
+            { Public declarations }
+        end;
+
+    var
+        Form1: TForm1;
+
+    implementation
+
+    {$R * .dfm}
+
+    procedure TForm1.Button1Click(Sender: TObject);
+    const
+        // 要访问的目标页面
+        mimvp_url = "http://proxy.mimvp.com/exist.php"
+        mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+        mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js"
+
+        // 代理服务器
+        proxy_ip = '138.68.165.154';
+        proxy_port = 3128;
+        
+    var
+        IDHTTP1 : TIDHTTP;
+    begin
+        Application.ProcessMessages;
+        IDHTTP1 : = TIDHTTP.Create(nil);
+        with IDHTTP1 do
+        begin
+            AllowCookies : = True;
+            HandleRedirects : = True;
+            ProxyParams.BasicAuthentication : = True;
+            ProxyParams.ProxyServer : = proxy_ip;
+            ProxyParams.ProxyPort : = proxy_port;
+#             ProxyParams.ProxyUsername : = 'mimvp-user';
+#             ProxyParams.ProxyPassword : = 'mimvp-pass';
+            
+            Request.Method : = 'GET';
+            Request.Accept : = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8';
+            Request.AcceptEncoding : = 'gzip, deflate, sdch';
+            Request.AcceptLanguage : = 'zh-CN,zh;q=0.8,en;q=0.6,ja;q=0.4';
+            Request.Connection : = 'keep-alive';
+            Request.UserAgent : = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36';
+            IDHTTP1.Get(mimvp_url);
+        end;
+    end;
+end.   
+    </code></pre>
+  </section>
+
+  <section id="content-go">
+  	<h1>Go 示例</h1>
+    <pre><code class="language-go">/**
+* go 支持 http、socks5
+*
+* 米扑代理示例：
+* http://proxy.mimvp.com/demo2.php
+*
+* 米扑代理购买：
+* http://proxy.mimvp.com
+*
+* mimvp.com
+* 2017.6.20
+*/
+
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"net/url"
+	"os"
+
+	"golang.org/x/net/proxy"
+)
+
+// http（方法1）
+func main_1(proxy_uri string, mimvp_url string) {
+	proxy := func(_ *http.Request) (*url.URL, error) {
+		return url.Parse(proxy_uri)
+	}
+	transport := &http.Transport{Proxy: proxy}
+	client := &http.Client{Transport: transport}
+	resp, err := client.Get(mimvp_url)
+	if err != nil {
+		fmt.Println("error : ", err)
+		return
+	} else {
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+		fmt.Printf("%s\n", body)
+	}
+}
+
+
+
+// http（方法2）
+func main_2(proxy_uri string, mimvp_url string) {
+	url_i := url.URL{}
+	url_proxy, _ := url_i.Parse(proxy_uri)
+	transport := &http.Transport{Proxy: http.ProxyURL(url_proxy)}
+	client := http.Client{Transport: transport}
+	resp, err := client.Get(mimvp_url)
+	if err != nil {
+		log.Fatalln(err)
+	} else {
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+		fmt.Printf("%s\n", body)
+	}
+}
+
+// config environment varable
+func main_22(proxy_uri string, mimvp_url string) {
+	// url_i := url.URL{}
+	// url_proxy, _ := url_i.Parse("https://127.0.0.1:9743")
+	os.Setenv("HTTP_PROXY", "http://125.77.25.124:80")
+	os.Setenv("HTTPS_PROXY", "https://210.209.89.100:8081")
+	c := http.Client{ /* Transport: &http.Transport{ // Proxy: http.ProxyURL(url_proxy)} */ }
+	resp, err := c.Get("http://mimvp.com")
+	if err != nil {
+		log.Fatalln(err)
+	} else {
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+		fmt.Printf("%s\n", body)
+	}
+}
+
+
+
+// 指定代理ip
+func getTransportFieldURL(proxy_addr *string) (transport *http.Transport) {
+	url_i := url.URL{}
+	url_proxy, _ := url_i.Parse(*proxy_addr)
+	transport = &http.Transport{Proxy: http.ProxyURL(url_proxy)}
+	return
+}
+
+// 从环境变量$http_proxy或$HTTP_PROXY中获取HTTP代理地址
+// Linux 设置代理环境变量命令：
+// http_proxy=http://125.77.25.124:80
+// https_proxy=https://210.209.89.100:8081
+func getTransportFromEnvironment() (transport *http.Transport) {
+	transport = &http.Transport{Proxy: http.ProxyFromEnvironment}
+	return
+}
+
+func fetch(mimvp_url, proxy_uri *string) (html string) {
+	transport := getTransportFieldURL(proxy_uri)
+	client := &http.Client{Transport: transport}
+	req, err := http.NewRequest("GET", *mimvp_url, nil)
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36")
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	if resp.StatusCode == 200 {
+		robots, err := ioutil.ReadAll(resp.Body)
+		resp.Body.Close()
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+		html = string(robots)
+	} else {
+		html = ""
+	}
+	return
+}
+
+// http（方法3）
+func main_3(proxy_uri string, mimvp_url string) {
+	html := fetch(&mimvp_url, &proxy_uri)
+	fmt.Println(html)
+}
+
+
+
+// socks5
+// 1. download https://github.com/golang/net
+// 2. unzip and move to /usr/local/go/src/golang.org/x/net/
+// 3. import ( "golang.org/x/net/proxy" )
+func main_socks5(proxy_socks string, mimvp_url string) {
+	dialer, err := proxy.SOCKS5("tcp", proxy_socks, nil, proxy.Direct)
+	if err != nil {
+		fmt.Println(os.Stderr, "can't connect to socks5 proxy:", err)
+		os.Exit(1)
+	}
+
+	// setup a http client
+	//	transport := &http.Transport{}
+	//	transport.Dial = dialer.Dial
+	transport := &http.Transport{Dial: dialer.Dial}
+	client := &http.Client{Transport: transport}
+
+	resp, err := client.Get(mimvp_url)
+	if err != nil {
+		log.Fatalln(err)
+	} else {
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+		fmt.Printf("%s\n", body)
+	}
+}
+
+
+func main() {
+	// http
+	proxy_uri := "http://125.77.25.124:80"
+	mimvp_url := "http://proxy.mimvp.com/exist.php"
+	main_1(proxy_uri, mimvp_url)
+	main_2(proxy_uri, mimvp_url)
+	main_3(proxy_uri, mimvp_url)
+
+	// socks5
+	proxy_socks := "175.138.65.244:1080"
+	main_socks5(proxy_socks, mimvp_url)
+}
+
+// 执行命令：
+// $ go build mimvp-proxy-go.go
+// $ ./mimvp-proxy-go
+    </code></pre>
+  </section>
+
+  <section id="content-groovy">
+    <h1>Groovy 示例</h1>
+    <pre><code class="language-groovy">/**
+ * Groovy 支持 http
+ *
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ *
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ *
+ * mimvp.com
+ * 2017-07-18
+ * 
+ * Groovy 爬取网页示例：
+ * http://blog.mimvp.com/2017/09/groovy-tong-guo-dai-li-zhua-qu-wang-ye/
+ */
+
+ 
+@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1' )
+
+import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.ContentType.*
+import static groovyx.net.http.Method.*
+import org.apache.http.auth.*
+
+
+class MimvpSpider {
+	static def proxy_http = "http://208.92.93.218:1080"
+	
+	static def mimvp_url = "http://proxy.mimvp.com/exist.php"
+	static def mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+	
+
+	static main(args) {
+		spider_proxy(MimvpSpider.mimvp_url, MimvpSpider.proxy_http)		// http
+		spider_proxy(MimvpSpider.mimvp_url2, MimvpSpider.proxy_http)	// https
+	}
+
+
+	static spider_proxy(mimvp_url, proxy) {
+		def http = new HTTPBuilder(mimvp_url)
+
+//		http.client.getCredentialsProvider().setCredentials(
+//		    new AuthScope("myproxy.com", 8080),
+//		    new UsernamePasswordCredentials("proxy-username", "proxy-password")
+//		)
+		
+		def proxy_type = proxy.split("://")[0]
+		def proxy_ip = proxy.split("://")[1].split(":")[0]
+		def proxy_port = proxy.split("://")[1].split(":")[1]
+		proxy_port = proxy_port.toInteger()
+		
+		println proxy_type
+		println proxy_ip
+		println proxy_port
+		
+		
+//		http.setProxy('myproxy.com', 8080, 'http')
+		http.setProxy(proxy_ip, proxy_port, proxy_type)
+		http.ignoreSSLIssues()		// 访问https网站，不需验证， module='http-builder', version='0.7.1'
+
+		http.request( GET, TEXT ){ req ->
+			response.success = { resp, reader ->
+				println "Response: ${reader.text}"
+			}
+		}
+	}
+}
+    </code></pre>
+  </section>
+
+  <section id="content-httpie">
+    <h1>HTTPie 示例</h1>
+    <pre><code class="language-perl">#!/bin/bash
+#
+# http 支持 http、https
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+#
+# 米扑代理购买：
+# http://proxy.mimvp.com
+#
+# mimvp.com
+# 2015-11-10
+
+
+# http代理格式 		--proxy http:IP:Port
+# https代理格式 		--proxy https:IP:Port
+
+
+$ http --help
+usage: http [--json] [--form] [--pretty {all,colors,format,none}]
+            [--style STYLE] [--print WHAT] [--headers] [--body] [--verbose]
+            [--all] [--history-print WHAT] [--stream] [--output FILE]
+            [--download] [--continue]
+            [--session SESSION_NAME_OR_PATH | --session-read-only SESSION_NAME_OR_PATH]
+            [--auth USER[:PASS]] [--auth-type {basic,digest}]
+            [--proxy PROTOCOL:PROXY_URL] [--follow]
+            [--max-redirects MAX_REDIRECTS] [--timeout SECONDS]
+            [--check-status] [--verify VERIFY]
+            [--ssl {ssl2.3,ssl3,tls1,tls1.1,tls1.2}] [--cert CERT]
+            [--cert-key CERT_KEY] [--ignore-stdin] [--help] [--version]
+            [--traceback] [--default-scheme DEFAULT_SCHEME] [--debug]
+            [METHOD] URL [REQUEST_ITEM [REQUEST_ITEM ...]]
+            
+# http
+http --proxy "http:217.107.197.174:8081" http://proxy.mimvp.com/exist.php
+
+# https
+http --verify no --proxy "https:46.105.214.133:3128" https://proxy.mimvp.com/exist.php
+    </code></pre>
+  </section>
+
+  <section id="content-java">
+    <h1>Java 示例</h1>
+    <pre><code class="language-java">/**
+ * Java 支持 http、https、socks4、socks5
+ * 
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ * 
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ * 
+ * mimvp.com
+ * 2015-11-09
+ */
+
+
+package com.mimvp;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.Authenticator;
+import java.net.InetSocketAddress;
+import java.net.PasswordAuthentication;
+import java.net.Proxy;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Properties;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+
+public class MimvpProxyJava {
+
+	@SuppressWarnings({ "serial" })
+	public static HashMap<String, String> proxyMap = new HashMap<String, String>() {
+		{
+			put("http", "138.68.161.14:3128");
+			put("https", "104.236.120.183:8080");
+			put("socks4", "113.7.118.112:2346");
+			put("socks5", "61.135.155.82:1080");
+		}
+	};
+	
+	final static String proxyUrl = "http://proxy.mimvp.com/exist.php";
+	final static String proxyUrl2 = "https://proxy.mimvp.com/exist.php";
+	final static String proxyUrl3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js";
+	
+
+	// 全局禁止ssl证书验证，防止访问非验证的https网址无法访问，例如：https://mimvp.com
+	static {
+	    disableSslVerification();
+	}
+
+	private static void disableSslVerification() {
+	    try
+	    {
+	        // Create a trust manager that does not validate certificate chains
+	        TrustManager[] trustAllCerts = new TrustManager[] {new X509TrustManager() {
+	            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+	                return null;
+	            }
+	            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+	            }
+	            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+	            }
+	        }
+	        };
+
+	        // Install the all-trusting trust manager
+	        SSLContext sc = SSLContext.getInstance("SSL");
+	        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+	        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+	        // Create all-trusting host name verifier
+	        HostnameVerifier allHostsValid = new HostnameVerifier() {
+	            public boolean verify(String hostname, SSLSession session) {
+	                return true;
+	            }
+	        };
+
+	        // Install the all-trusting host verifier
+	        HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
+	    } catch (NoSuchAlgorithmException e) {
+	        e.printStackTrace();
+	    } catch (KeyManagementException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	
+	public static void main(String args[]){
+		int dataLen = 0;
+
+		// proxy protocol 只支持 http、socks5
+		System.out.println("+++++++++ proxy protocol +++++++++");			
+		Iterator<String> it = MimvpProxyJava.proxyMap.keySet().iterator();
+		while(it.hasNext()){
+			String proxyType = it.next();
+			String proxyStr = MimvpProxyJava.proxyMap.get(proxyType);
+			dataLen = proxy_protocol(proxyType, proxyStr);
+			System.out.println(proxyType + " : " + proxyStr + " --> " + dataLen);
+		}
+
+		// proxy property 支持http、https、socks4、socks5
+		System.out.println("\n+++++++++ proxy property +++++++++");
+		Iterator<String> it2 = MimvpProxyJava.proxyMap.keySet().iterator();
+		while(it2.hasNext()){
+			String proxyType = it2.next();
+			String proxyStr = MimvpProxyJava.proxyMap.get(proxyType);
+			dataLen = proxy_property(proxyType, proxyStr);
+			System.out.println(proxyType + " : " + proxyStr + " --> " + dataLen);
+		}
+
+		// proxy socks
+		System.out.println("\n++++++++ proxy socks +++++++++++");
+		Iterator<String> it3 = MimvpProxyJava.proxyMap.keySet().iterator();
+		while(it3.hasNext()){
+			String proxyType = it3.next();
+			String proxyStr = MimvpProxyJava.proxyMap.get(proxyType);
+			dataLen = proxy_socks(proxyType, proxyStr);
+			System.out.println(proxyType + " : " + proxyStr + " --> " + dataLen);
+		}
+	}
+	
+	
+	// 设置系统代理，支持全部协议 http，https，socks4，socks5
+	private static int proxy_property(String proxyType, String proxyStr) {
+		int dataLen = 0;
+
+		String proxy_ip = proxyStr.split(":")[0];
+		String proxy_port = proxyStr.split(":")[1];
+		
+		Properties prop = System.getProperties();
+		
+		// http
+		if(proxyType.equals("http")){
+			prop.setProperty("http.proxySet", "true");
+			prop.setProperty("http.proxyHost", proxy_ip);
+			prop.setProperty("http.proxyPort", proxy_port);
+			prop.setProperty("http.nonProxyHosts", "localhost|192.168.0.*");
+		}
+		
+		// https
+		if (proxyType.equals("https")) {
+			prop.setProperty("https.proxyHost", proxy_ip);
+			prop.setProperty("https.proxyPort", proxy_port);
+		}
+        
+        // socks
+		if(proxyType.equals("socks4") || proxyType.equals("socks5")){
+	        prop.setProperty("socksProxySet", "true");
+	        prop.setProperty("socksProxyHost", proxy_ip);
+	        prop.setProperty("socksProxyPort", proxy_port);
+		}
+        
+        // ftp
+		if(proxyType.equals("ftp")){
+	        prop.setProperty("ftp.proxyHost", proxy_ip);
+	        prop.setProperty("ftp.proxyPort", proxy_port);
+	        prop.setProperty("ftp.nonProxyHosts", "localhost|192.168.0.*");
+		}
+        
+//        // auth 设置登录代理服务器的用户名和密码
+//        Authenticator.setDefault(new MyAuthenticator("user", "pwd"));
+        
+		try{
+			URL url = new URL(proxyUrl2);		// http://proxy.mimvp.com
+			URLConnection conn = url.openConnection();
+			conn.setConnectTimeout(30 * 1000);
+			
+			InputStream in = conn.getInputStream();
+			InputStreamReader reader = new InputStreamReader(in);
+			char[] ch = new char[1024];
+			int len = 0;
+			String data = "";
+			while((len = reader.read(ch)) > 0) {
+				String newData = new String(ch, 0, len);
+				data += newData;
+			}
+			System.out.println("data : " + data);
+			dataLen = data.length();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+        return dataLen;
+	}
+	
+	static class MyAuthenticator extends Authenticator {
+        private String user = "";
+        private String password = "";
+        public MyAuthenticator(String user, String password) {
+            this.user = user;
+            this.password = password;
+        }
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(user, password.toCharArray());
+        }
+    }
+	
+	
+	// 使用函数协议，仅支持 HTTP 和 SOCKS5
+	private static int proxy_protocol(String proxyType, String proxyStr){
+		int dataLen = 0;
+
+		String proxy_ip = proxyStr.split(":")[0];
+		int proxy_port = Integer.parseInt(proxyStr.split(":")[1]);
+		
+		try{
+			URL url = new URL(proxyUrl);		// http://proxy.mimvp.com
+			
+			InetSocketAddress addr = new InetSocketAddress(proxy_ip, proxy_port);
+			Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
+			if(proxyType.equals("socks4") || proxyType.equals("socks5")) {
+				proxy = new Proxy(Proxy.Type.SOCKS, addr);
+			}
+			
+			URLConnection conn = url.openConnection(proxy);
+			conn.setConnectTimeout(30 * 1000);
+			
+			InputStream in = conn.getInputStream();
+			InputStreamReader reader = new InputStreamReader(in);
+			char[] ch = new char[1024];
+			int len = 0;
+			String data = "";
+			while((len = reader.read(ch)) > 0) {
+				String newData = new String(ch, 0, len);
+				data += newData;
+			}
+			System.out.println("data : " + data);
+			dataLen = data.length();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return dataLen;
+	}
+	
+	
+	// proxy socket，测试用
+	private static int proxy_socks(String proxyType, String proxyStr){
+		int dataLen = 0;
+		Socket socket = null;
+		
+		String proxy_ip = proxyStr.split(":")[0];
+		int proxy_port = Integer.parseInt(proxyStr.split(":")[1]);
+		
+		try {
+			socket = new Socket(proxy_ip, proxy_port);
+			
+			byte[] ch = new String("GET http://www.mimvp.com/ HTTP/1.1\r\n\r\n").getBytes();
+			socket.getOutputStream().write(ch);
+			socket.setSoTimeout(30 * 1000);
+			
+			byte[] bt = new byte[1024];
+			InputStream in = socket.getInputStream();
+			int len = 0;
+			String data = "";
+			while((len = in.read(bt)) > 0) {
+				String newData = new String(bt, 0, len);
+				data += newData;
+			}
+			System.out.println("data : " + data);
+			dataLen = data.length();
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(socket != null){
+					socket.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			socket = null;
+		}
+		return dataLen;
+	}
+	
+	
+//	启动运用通过JVM参数走代理, 注意这种代理是全局的,设置以后全部会自动走代理,
+//	如果需要单个请求走代理(在走代理失败的话, 会自动尝试本地直接访问), 请使用proxy_protocol()协议代理函数
+//	-DproxySet=true
+//	-Dhttp.proxyHost=proxyIp
+//	-Dhttp.proxyPort=proxyPort
+
+}
+    </code></pre>
+  </section>
+
+
+
+  <section id="content-nodejs">
+    <h1>NodeJS 示例</h1>
+    <pre><code class="language-javascript">/**
+ * NodeJS 支持 http、https、socks4、socks5
+ * 
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ * 
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ * 
+ * mimvp.com
+ * 2017.5.25
+ * 
+ * 米扑博客示例详解 : 
+ * http://blog.mimvp.com/2017/10/node-js-she-zhi-dai-li-de-liang-zhong-fang-shi-superagent-proxy-he-https-proxy-agent/
+ * 
+ * proxy-agent		 : https://www.npmjs.com/package/proxy-agent
+ * superagent-proxy  : https://www.npmjs.com/package/superagent-proxy
+ * http-proxy-agent  : https://www.npmjs.com/package/http-proxy-agent
+ * https-proxy-agent : https://www.npmjs.com/package/https-proxy-agent
+ * socks-proxy-agent : https://www.npmjs.com/package/socks-proxy-agent
+ */
+
+var proxy_http = "http://35.154.138.213:80";
+var proxy_https = "http://103.247.154.105:8080";	
+var proxy_socks4 = "socks4://202.159.8.243:1080";
+var proxy_socks5 = "socks5://94.177.216.47:2016";
+
+var mimvp_url = "http://proxy.mimvp.com/exist.php";
+var mimvp_url2 = "https://proxy.mimvp.com/exist.php";
+var mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js";
+
+
+
+//http for http
+function check_http(proxy_uri, mimvp_url) {
+	var http = require('http');
+	var url = require('url');
+	
+	console.log("proxy_uri : " + proxy_uri);
+	
+	var proxy_ip = proxy_uri.toString().split("://")[1].split(":")[0];		// IP
+	var proxy_port = proxy_uri.toString().split("://")[1].split(":")[1];	// Port
+	
+	const options = {
+		      host     : proxy_ip,
+		      port     : proxy_port,
+		      path     : mimvp_url,
+		      method   : 'GET',
+		      headers : {
+		    	  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+		    	  "Host": "apps.bdimg.com",
+		    	  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+		      }
+	};
+	
+	http
+    .request(options, function(res) {
+        console.log("got response code: " + res.statusCode);
+        if (res.statusCode == 200) {
+            res.setEncoding("utf-8");
+            var resData = "";
+            res.on("data", function(chunk) {
+                resData += chunk;
+            }).on("end", function() {
+                console.log("got response text: " + resData);
+            });
+        } else {
+            console.log("res.statusCode err " + res.statusCode);	// 请求失败
+        }
+    })
+    .on("error", function(err) {
+        console.log(err);
+    })
+    .end();   
+};
+
+
+// request http, https
+function check_request(proxy_uri, mimvp_url) {
+	var request = require('request');
+	
+	console.log("proxy_uri : " + proxy_uri);
+	
+	const proxiedRequest = request.defaults({'proxy': proxy_uri});
+	const options = {
+		      url     : mimvp_url,
+		      headers : {
+		    	  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+		    	  "Host": "apps.bdimg.com",
+		    	  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+		      }
+	};
+	
+	proxiedRequest
+    .get(options, function (err, res, body) {
+        console.log("got response: " + res.statusCode);
+        console.log("got body: " + body);
+    })
+    .on("error", function (err) {
+        console.log(err);
+    });          
+};
+
+
+// superagent-proxy http, https
+function check_superagent(proxy_uri, mimvp_url) {
+	var superagent = require('superagent');
+	require('superagent-proxy')(superagent);
+	
+	console.log("proxy_uri : " + proxy_uri);
+	
+	superagent
+	.get(mimvp_url)
+	.proxy(proxy_uri)
+	.buffer(true)
+	.set('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36')
+	.set('Host','apps.bdimg.com')
+	.set('Accept','text/html,application/xhtml+xml,application/xml,application/x-javascript;q=0.9,image/webp,image/apng,*/*;q=0.8')
+	.set('Accept-Encoding','gzip, deflate, br')
+	.end(function onResponse(err, res) {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log(res.status, res.headers);
+			console.log(res.text);
+		}
+	});
+};
+
+
+// https-proxy-agent https
+function check_httpsproxyagent(proxy_uri, mimvp_url) {
+	var url = require('url');
+	var https = require('https');
+	var HttpsProxyAgent = require('https-proxy-agent');
+	 
+	console.log('using proxy server %j', proxy_uri);	// 'https://79.137.80.210:3128'
+	
+	var agent = new HttpsProxyAgent(proxy_uri);
+	var endpoint = process.argv[2] || mimvp_url;
+	var options = url.parse(endpoint);
+	options.agent = agent;
+	options.port = 443;
+	options.secureProxy = true;
+	
+	headers = {
+	"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+	"Host": "apps.bdimg.com",
+	"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+	};
+	options.headers = headers;
+	console.log('options %j', options);
+	 
+	https.get(options, function (res) {
+	  console.log('"response" event!', res.headers);
+	  res.pipe(process.stdout);
+	});
+}
+
+
+//socks-proxy-agent socks4, socks5
+function check_socksproxyagent(proxy_uri, mimvp_url) {
+	var url = require('url');
+	var http = require('http');
+	var SocksProxyAgent = require('socks-proxy-agent');
+	 
+	console.log('using proxy server %j', proxy_uri);	// 'socks://94.177.216.47:2016'
+	
+	var agent = new SocksProxyAgent(proxy_uri);
+	var endpoint = process.argv[2] || mimvp_url;
+	var options = url.parse(endpoint);
+	options.agent = agent;
+	options.port = 443;
+	options.secureProxy = true;
+	
+	headers = {
+	"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+	"Host": "apps.bdimg.com",
+	"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+	"Accept-Encoding": "gzip, deflate, br",
+	};
+	options.headers = headers;
+	console.log('options %j', options);
+	 
+	http.get(options, function (res) {
+	  console.log('"response" event!', res.headers);
+	  res.pipe(process.stdout);
+	});
+}
+
+// http
+check_http(proxy_http, mimvp_url);					// http
+
+// request
+check_request(proxy_http, mimvp_url);				// http
+check_request(proxy_https, mimvp_url3);				// https
+
+// superagent
+check_superagent(proxy_http, mimvp_url);			// http
+check_superagent(proxy_https, mimvp_url3);			// https
+
+// https_proxy_agent
+check_httpsproxyagent(proxy_https, mimvp_url3);		// https
+
+// socks_proxy_agent
+check_socksproxyagent(proxy_socks4, mimvp_url);		// socks4
+check_socksproxyagent(proxy_socks5, mimvp_url);		// socks5
+
+
+// 执行命令：
+// cd /usr/local/node/lib/node_modules/npm/
+// sudo cp ~/Documents/workspace/MimvpProxyDemo/NodeJS/mimvp-proxy-nodejs.js .
+// sudo node mimvp-proxy-nodejs.js
+    </code></pre>
+  </section>
+
+  <section id="content-phantomjs">
+    <h1>PhantomJS 示例</h1>
+    <pre><code class="language-javascript">/**
+ * PhantomJS 支持 http、socks5
+ * 
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ * 
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ * 
+ * mimvp.com
+ * 2017.5.22
+ */
+
+// http代理格式	：	phantomjs --proxy-type=http --proxy=IP:Port
+// socks代理格式	：	phantomjs --proxy-type=socks5 --proxy=IP:Port
+
+
+/**
+ $ phantomjs -h  
+ --ignore-ssl-errors=            Ignores SSL errors (expired/self-signed certificate errors): 'true' or 'false' (default)
+ --proxy=                        Sets the proxy server, e.g. '--proxy=http://proxy.company.com:8080'
+ --proxy-auth=                   Provides authentication information for the proxy, e.g. ''-proxy-auth=username:password'
+ --proxy-type=                   Specifies the proxy type, 'http' (default), 'none' (disable completely), or 'socks5'
+ --script-encoding=              Sets the encoding used for the starting script, default is 'utf8'
+ --web-security=                 Enables web security, 'true' (default) or 'false'
+ --ssl-protocol=                 Selects a specific SSL protocol version to offer.
+ --ssl-ciphers=                  Sets supported TLS/SSL ciphers. 
+ --ssl-certificates-path=        Sets the location for custom CA certificates 
+ --ssl-client-certificate-file=  Sets the location of a client certificate
+ --ssl-client-key-file=          Sets the location of a clients' private key
+ --ssl-client-key-passphrase=    Sets the passphrase for the clients' private key
+ */
+
+
+var mimvp_url = "http://proxy.mimvp.com/exist.php";
+var mimvp_url2 = "https://proxy.mimvp.com/exist.php";
+var mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js";
+
+var page = require('webpage').create();
+page.settings.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36';
+
+page.open(mimvp_url, {}, function(status) { 		// http
+//page.open(mimvp_url2, {}, function(status) { 		// socks5
+	console.log('status : ' + status);
+	if (status == "success") {
+		console.log("set proxy success");
+		console.log('page.content : ' + page.content);
+		console.log('page.content length : ' + page.content.length);
+	} else {
+		console.log("set proxy fail");
+	}
+	phantom.exit();
+});
+
+// 执行命令：
+// http    : phantomjs --proxy-type=http --proxy=23.94.65.132:1080 mimvp-proxy-phantomjs.js
+// socks5  : phantomjs --proxy-type=socks5 --proxy=78.63.194.59:35844 --ignore-ssl-errors=true mimvp-proxy-phantomjs.js
+    </code></pre>
+  </section>
+
+	<section id="content-perl">
+	  <h1>Perl 示例</h1>
+	  <pre><code class="language-perl">#!/usr/bin/env perl 
+#
+# Perl 支持 http、https
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2017-03-28
+
+
+use CGI;
+use strict;
+use LWP::UserAgent;
+
+
+our %proxy_http = ("http", "http://138.68.165.154:3128");
+our %proxy_https = ("https", "https://113.106.94.213:80");
+our %proxy_connect = ("https", "connect://173.233.55.118:443");
+
+our $mimvp_url = "http://proxy.mimvp.com/exist.php";
+our $mimvp_url2 = "https://proxy.mimvp.com/exist.php";
+
+
+
+## http 
+sub test_http {
+	my ($url, %proxy) = @_;
+	
+	print "proxy  : $proxy{'http'}\n";
+	print "https  : $proxy{'https'}\n";
+	print "url : $url\n";
+	
+	my $browser = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0 });
+	$browser->env_proxy();
+	
+# 	# 设置的代理格式
+# 	$browser->proxy('http', 'http://138.68.165.154:3128');  
+# 	$browser->proxy(['http','ftp'], 'http://138.68.165.154:3128');  
+	$browser->proxy(%proxy);
+	$browser->timeout(30);
+	$browser->agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36');
+	
+	my $response = $browser->get($url);  				# 爬取的网址
+	my $is_success = $response->is_success();			# 1
+	my $content_type = $response->content_type();		# text/html
+	my $content = $response->content();					# 网页正文
+	my $content_length = length($content);				# 网页正文长度
+	
+	print "$is_success\n";
+	print "$content_type\n";
+	print "$content_length\n";
+	print "$content\n";
+}
+
+
+
+## https (NO Success)
+## error info : LWP::Protocol::https::Socket: SSL connect attempt failed because of handshake problems SSL wants a read first at /System/Library/Perl/Extras/5.18/LWP/Protocol/http.pm line 51.
+sub test_https {
+	my ($url, %proxy) = @_;
+	
+	print "proxy  : $proxy{'http'}\n";
+	print "https  : $proxy{'https'}\n";
+	print "url : $url\n";
+	
+	BEGIN {
+		$ENV{HTTPS_PROXY} = 'https://173.233.55.118:443'; 
+# 		$ENV{HTTPS_PROXY_USERNAME} = <username>; 
+# 		$ENV{HTTPS_PROXY_PASSWORD} = <password>; 
+		$ENV{HTTPS_DEBUG} = 1;
+		$ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0;
+	}
+	
+	my $browser = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0 });
+	$browser->env_proxy();
+	
+# 	# 设置的代理格式
+# 	$browser->proxy(%proxy);	# NO USE
+	$browser->timeout(30);
+	$browser->agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36');
+	
+	my $req = new HTTP::Request('GET', $url);			# 爬取的网址
+	my $response = $browser->request($req);
+	
+	my $is_success = $response->is_success();			# 1
+	my $content_type = $response->content_type();		# text/html
+	my $content = $response->content();					# 网页正文
+	my $content_length = length($content);				# 网页正文长度
+	
+	print "$is_success\n";
+	print "$content_type\n";
+	print "$content_length\n";
+	print "$content\n";
+}
+
+
+
+## https (connect)
+## 1. download LWP-Protocol-connect (wget http://search.cpan.org/CPAN/authors/id/B/BE/BENNING/LWP-Protocol-connect-6.09.tar.gz)
+## 2. tar zxvf LWP-Protocol-connect-6.09.tar.gz 
+##    cd LWP-Protocol-connect-6.09
+##    perl Makefile.PL
+##    make
+##    sudo make install
+sub test_connect {
+	my ($url, %proxy) = @_;
+	
+	print "proxy  : $proxy{'http'}\n";
+	print "https  : $proxy{'https'}\n";
+	print "url : $url\n";
+	
+	my $browser = LWP::UserAgent->new();
+	$browser->env_proxy();
+	
+# 	# 设置的代理格式
+# 	$browser->proxy('https', 'connect://173.233.55.118:443'); 
+	$browser->proxy(%proxy);
+	$browser->timeout(30);
+	$browser->agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36');
+	
+# 	my $req = new HTTP::Request('GET', $url);
+# 	my $response = $browser->request($req);
+	my $response = $browser->get($url);  				# 爬取的网址
+	my $is_success = $response->is_success();			# 1
+	my $content_type = $response->content_type();		# text/html
+	my $content = $response->content();					# 网页正文
+	my $content_length = length($content);				# 网页正文长度
+	
+	print "$is_success\n";
+	print "$content_type\n";
+	print "$content_length\n";
+	print "$content\n";
+}
+
+
+test_http($mimvp_url, %proxy_http);			# http
+test_https($mimvp_url2, %proxy_https);		# https (NO Success)
+test_connect($mimvp_url2, %proxy_connect);	# https (connect)
+
+
+
+## 执行命令
+## perl -d mimvp-proxy-perl.pl
+	  </code></pre>
+	</section>
+
+  <section id="content-php">
+    <h1>PHP 示例</h1>
+    <pre><code class="language-php">/**
+ * PHP 支持 http、https、socks4、socks5、tcp
+ * 
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ * 
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ * 
+ * mimvp.com
+ * 2017.5.25
+ * 
+ * CURLOPT_PROXYTYPE :
+ * 	CURLPROXY_HTTP,    CURLPROXY_HTTP_1_0
+ * 	CURLPROXY_SOCKS4,  CURLPROXY_SOCKS4A
+ * 	CURLPROXY_SOCKS5,  CURLPROXY_SOCKS5_HOSTNAME
+ */
+
+
+$proxy_http = "http://138.68.165.154:3128";
+$proxy_https = "https://202.53.169.199:3128";
+$proxy_socks4 = "socks4://94.158.70.129:1080";
+$proxy_socks5 = "socks5://173.230.95.147:45454";
+
+$proxy_tcp = "tcp://138.68.165.154:3128";
+
+$mimvp_url = "http://proxy.mimvp.com/exist.php";
+$mimvp_url2 = "https://proxy.mimvp.com/exist.php";
+$mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js";
+
+
+// curl
+proxy_curl($proxy_http, $mimvp_url);			// http
+proxy_curl($proxy_https, $mimvp_url);		// https
+proxy_curl($proxy_socks4, $mimvp_url);		// socks4
+proxy_curl($proxy_socks5, $mimvp_url);		// socks5
+
+// stream
+proxy_stream($proxy_tcp, $mimvp_url);			// tcp
+
+
+
+// php curl 支持 http、https、socks4、socks5
+function proxy_curl($proxy_uri, $mimvp_url) {
+	$key = explode('://', $proxy_uri)[0];		// http
+	$proxy= explode('://', $proxy_uri)[1];		// ip:port
+	echo "proxy_uri :  $proxy_uri; key : $key, proxy : $proxy <br>";
+	
+	$ch = curl_init ();
+	curl_setopt ( $ch, CURLOPT_URL, $mimvp_url);
+	curl_setopt ( $ch, CURLOPT_HTTPPROXYTUNNEL, false );
+	curl_setopt ( $ch, CURLOPT_PROXY, $proxy );
+	
+	if ($key == "http") {
+		curl_setopt ( $ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP );		// http
+	}
+	elseif ($key == "https") {
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYHOST, 2 );	
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false );
+		curl_setopt ( $ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTPS );	// https
+	}
+	elseif ($key == "socks4") {
+		curl_setopt ( $ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4 );	// socks4
+	}
+	elseif ($key == "socks5") {
+		curl_setopt ( $ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5 );	// socks5
+	}
+	else {
+		curl_setopt ( $ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP );
+	}
+	
+	curl_setopt ( $ch, CURLOPT_TIMEOUT, 60 );
+	curl_setopt ( $ch, CURLOPT_CONNECTTIMEOUT, 60 );
+	curl_setopt ( $ch, CURLOPT_HEADER, false );
+	curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );	// 返回网页内容
+	
+	$result = curl_exec ( $ch );
+	
+	// 打印网页正文
+	print_r($result);
+	
+	// 打印网页大小
+	$curl_info = curl_getinfo($ch);
+	echo $curl_info['size_download'] . "<br><br>";
+	
+	curl_close ( $ch );
+}
+
+
+
+// php stream 支持 tcp
+function proxy_stream($proxy_uri, $mimvp_url) {
+	
+	$key = explode('://', $proxy_uri)[0];		// http
+	$proxy= explode('://', $proxy_uri)[1];		// ip:port
+	echo "proxy_uri :  $proxy_uri; key : $key, proxy : $proxy <br>";
+	
+	$header_array = array(	"Accept-Language:zh-CN,zh;q=0.8,en;q=0.6,ja;q=0.4",
+							"Referer:http://proxy.mimvp.com/fetch.php",
+							"Host:proxy.mimvp.com",
+							"User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
+	
+	$options = array("http" => array(
+					"proxy"  => $proxy_uri,
+					"header" => $header_array,
+					"method" => "GET")
+			);
+	
+	$context = stream_context_create($options);
+	$result = file_get_contents($mimvp_url, false, $context);
+	
+	print_r($result);      
+}
+	  	</code></pre>
+	</section>
+	
+	<section id="content-python2">
+		<h1>Python2 示例</h1>
+		<pre><code class="language-perl">#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+#
+# Python2 支持 http、https、socks4、socks5
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2015-11-09
+
+
+import urllib, urllib2
+import socks, socket        # 需要引入socks.py文件，请到米扑代理下载
+import ssl
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
+proxy_http = {"http":"http://138.68.165.154:3128"}
+proxy_https = {"https":"http://191.252.103.93:8080"}
+proxy_socks4 = {'socks4': '218.58.52.158:1088'} 
+proxy_socks5 = {'socks5': '68.234.190.150:45454'}
+
+mimvp_url = "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js"
+
+
+# 全局取消ssl证书验证，防止打开未验证的https网址抛出异常
+# urllib2.URLError: [urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)]
+ssl._create_default_https_context = ssl._create_unverified_context
+            
+            
+# urllib2 支持 http, https
+def test_http(proxy, mimvp_url):
+    handler = urllib2.ProxyHandler(proxy)
+    opener = urllib2.build_opener(handler)
+    f = opener.open(mimvp_url, timeout=30)
+    content = f.read()
+    print content
+    print len(content)
+    f.close()
+    opener.close()
+    
+    
+# urllib 支持 http, https
+def test_http2(proxy, mimvp_url):
+    opener = urllib.FancyURLopener(proxy)
+    f = opener.open(mimvp_url)                 #### mimvp_url 只能是http网页，不能是https网页
+    content = f.read()
+    print content
+    print len(content)
+    f.close()
+    opener.close()
+    
+    
+# socks4
+def test_socks4(socks4, mimvp_url):
+    socks4_ip = socks4.split(":")[0]
+    socks4_port = int(socks4.split(":")[1])
+    socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS4, socks4_ip, socks4_port)
+    socket.socket = socks.socksocket
+    
+    content = urllib2.urlopen(mimvp_url, timeout=30).read()
+    print content
+    print len(content)
+    
+    
+# socks5
+def test_socks5(socks5, mimvp_url):
+    socks5_ip = socks5.split(":")[0]
+    socks5_port = int(socks5.split(":")[1])
+    socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, socks5_ip, socks5_port)
+    socket.socket = socks.socksocket
+    
+    content = urllib2.urlopen(mimvp_url, timeout=30).read()
+    print content
+    print len(content)
+    
+
+
+if __name__ == "__main__":
+    # http, https
+    test_http(proxy_http, mimvp_url)   
+    test_http(proxy_https, mimvp_url2)    
+    
+    # http
+    test_http2(proxy_http, mimvp_url)   
+      
+    # socks4
+    test_socks4(proxy_socks4['socks4'], mimvp_url)
+     
+    # socks5
+    test_socks5(proxy_socks5['socks5'], mimvp_url)
+		</code></pre>
+	</section>
+	
+	<section id="content-python3">
+		<h1>Python3 示例</h1>
+		<pre><code class="language-perl">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+#
+# Python3 支持 http、https、socks4、socks5
+# 
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2016-10-22
+
+
+import urllib.request   # Python3将urllib和urllib2合二为一，并重组了下包结构
+import socket
+import socks            # 安装 pip3 install PySocks
+import ssl
+
+
+proxy_http = {"http":"http://183.222.102.98:80"}
+proxy_https = {"https":"http://191.252.103.93:8080"}
+proxy_socks4 = {'socks4': '186.121.206.241:1080'} 
+proxy_socks5 = {'socks5': '68.180.33.124:45454'}
+
+mimvp_url = "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js"
+
+
+# 全局取消ssl证书验证，防止打开未验证的https网址抛出异常
+# urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)>
+ssl._create_default_https_context = ssl._create_unverified_context
+            
+            
+# 不用代理，直接爬取网页
+def test_url(mimvp_url):
+    socket.setdefaulttimeout(30)
+    req = urllib.request.Request(mimvp_url)
+    content = urllib.request.urlopen(req).read()
+    print(content)
+
+
+# urllib 支持 http, https
+def test_http(proxy, mimvp_url):
+    socket.setdefaulttimeout(30)
+    handler = urllib.request.ProxyHandler(proxy)  
+    
+#     auth_handler = urllib.request.ProxyBasicAuthHandler()  
+#     opener = request.build_opener(handler, auth_handler, request.HTTPHandler)
+    
+    opener = urllib.request.build_opener(handler)  
+    urllib.request.install_opener(opener)
+    f = urllib.request.urlopen(mimvp_url)
+
+    content = f.read()
+    print(content)
+    print(len(content))
+    f.close()
+    opener.close()
+
+
+# socks4
+def test_socks4(socks4, mimvp_url):
+    socks4_ip = socks4.split(":")[0]
+    socks4_port = int(socks4.split(":")[1])
+    socks.set_default_proxy(socks.SOCKS4, socks4_ip, socks4_port)
+    socket.socket = socks.socksocket
+    
+    content = urllib.request.urlopen(mimvp_url, timeout=30).read()
+    print(content)
+    print(len(content))
+    
+    
+# socks5
+def test_socks5(socks5, mimvp_url):
+    socks5_ip = socks5.split(":")[0]
+    socks5_port = int(socks5.split(":")[1])
+    socks.set_default_proxy(socks.SOCKS5, socks5_ip, socks5_port)
+    socket.socket = socks.socksocket
+    
+    content = urllib.request.urlopen(mimvp_url, timeout=30).read()
+    print(content)
+    print(len(content))
+    
+
+
+if __name__ == "__main__":
+    test_url(mimvp_url)
+    
+    # http, https
+    test_http(proxy_http, mimvp_url)   
+    test_http(proxy_https, mimvp_url2)    
+
+    # socks4
+    test_socks4(proxy_socks4['socks4'], mimvp_url2)
+      
+    # socks5
+    test_socks5(proxy_socks5['socks5'], mimvp_url2)
+		</code></pre>
+	</section>
+	
+	<section id="content-python-pyspider">
+		<h1>Python pyspider 示例</h1>
+		<pre><code class="language-perl">#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# Project: mimvp_proxy_pyspider
+#
+# Python pyspider 支持 http、https
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2017-07-22
+#
+# 米扑博客示例详解 : 
+# http://blog.mimvp.com/2017/08/python-pyspider-an-zhuang-yu-kai-fa/
+
+
+############  方式1：pyspider crawl_config  ############
+
+from pyspider.libs.base_handler import *
+
+class Handler(BaseHandler):
+    crawl_config = {
+        'proxy' : 'http://188.226.141.217:8080',     # http
+        'proxy' : 'https://182.253.32.65:3128'       # https
+    }
+
+    @every(minutes=24 * 60)
+    def on_start(self):
+        self.crawl('http://proxy.mimvp.com/exist.php', callback=self.index_page)
+
+    @config(age=10 * 24 * 60 * 60)
+    def index_page(self, response):
+        for each in response.doc('a[href^="http"]').items():
+            self.crawl(each.attr.href, callback=self.detail_page)
+
+    @config(priority=2)
+    def detail_page(self, response):
+        return {
+            "url": response.url,
+            "title": response.doc('title').text(),
+        }
+        
+        
+        
+############  方式2：pyspider --phantomjs-proxy 启动  ############
+
+# $ pyspider --help
+# Usage: pyspider [OPTIONS] COMMAND [ARGS]...
+# 
+#   A powerful spider system in python.
+# 
+# Options:
+#   -c, --config FILENAME           a json file with default values for
+#                                   subcommands. {"webui": {"port":5001}}
+#   --logging-config TEXT           logging config file for built-in python
+#                                   logging module  [default: /Library/Framework
+#                                   s/Python.framework/Versions/2.7/lib/python2.
+#                                   7/site-packages/pyspider/logging.conf]
+#   --debug                         debug mode
+#   --queue-maxsize INTEGER         maxsize of queue
+#   --taskdb TEXT                   database url for taskdb, default: sqlite
+#   --projectdb TEXT                database url for projectdb, default: sqlite
+#   --resultdb TEXT                 database url for resultdb, default: sqlite
+#   --message-queue TEXT            connection url to message queue, default:
+#                                   builtin multiprocessing.Queue
+#   --amqp-url TEXT                 [deprecated] amqp url for rabbitmq. please
+#                                   use --message-queue instead.
+#   --beanstalk TEXT                [deprecated] beanstalk config for beanstalk
+#                                   queue. please use --message-queue instead.
+#   --phantomjs-proxy TEXT          phantomjs proxy ip:port
+#   --data-path TEXT                data dir path
+#   --add-sys-path / --not-add-sys-path
+#                                   add current working directory to python lib
+#                                   search path
+#   --version                       Show the version and exit.
+#   --help                          Show this message and exit.
+   
+pyspider --phantomjs-proxy "188.226.141.217:8080" all
+		</code></pre>
+	</section>
+	
+	
+	
+	<section id="content-python-requests">
+		<h1>Python requests 示例</h1>
+		<pre><code class="language-perl">#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+#
+# Python requests 支持 http、https、socks4、socks5
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2016-09-16
+
+
+import requests
+import ssl
+import socks, socket    # 需要引入socks.py文件，请到米扑代理下载
+
+
+mimvp_url = "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js"
+            
+            
+# 使用代理 http, https
+proxies = { 
+            "http"  : "http://120.77.155.249:8888", 
+            "https" : "http://54.255.211.38:80", 
+           }   
+  
+req = requests.get(mimvp_url2, proxies=proxies, timeout=30, verify=False) 
+print("mimvp text : " + req.text)
+
+
+
+# 使用代理 socks4
+proxies = { 
+            'socks4' : '163.121.188.2:4000',
+           }   
+ 
+socks4_ip = proxies['socks4'].split(":")[0]
+socks4_port = int(proxies['socks4'].split(":")[1])
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS4, socks4_ip, socks4_port)
+socket.socket = socks.socksocket
+ 
+req = requests.get(mimvp_url2, timeout=30, verify=False) 
+print("mimvp text : " + req.text)
+
+
+
+# 使用代理 socks5
+proxies = { 
+            'socks5' : '190.9.58.211:45454',
+           }   
+  
+socks5_ip = proxies['socks5'].split(":")[0]
+socks5_port = int(proxies['socks5'].split(":")[1])
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, socks5_ip, socks5_port)
+socket.socket = socks.socksocket
+  
+req = requests.get(mimvp_url2, timeout=30, verify=False) 
+print("mimvp text : " + req.text)
+ 
+ 
+ 
+ 
+ 
+ 
+################### requests 简单示例 ###################
+ 
+# 爬取米扑科技首页
+req = requests.get(url = 'http://mimvp.com')
+print("status_code : " + str(req.status_code))
+print("mimvp text : " + req.text)
+  
+  
+# 爬取米扑代理（含请求参数）
+req = requests.get(url='http://proxy.mimvp.com/free.php', params={'proxy':'out_tp','sort':'p_ping'})   
+print("status_code : " + str(req.status_code))
+print("mimvp text : " + req.text)
+		</code></pre>
+	</section>
+
+	<section id="content-python-scrapy">
+		<h1>Python scrapy 示例</h1>
+		<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+#
+# Python scrapy 支持 http、https
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2016.10.1
+
+# Python Scrapy 设置代理有两种方式，使用时两种方式选择一种即可
+# 方式1： 直接在代码里设置，如 MimvpSpider ——> start_requests
+# 方式2： 通过 middlewares.py + settings.py 配置文件设置，步骤：
+#        2.1 middlewares.py 添加代理类 ProxyMiddleware，并添加代理
+#        2.2 settings.py 开启 DOWNLOADER_MIDDLEWARES，并且添加 'mimvp_proxy_python_scrapy.middlewares.ProxyMiddleware': 100
+#
+# 米扑博客想写介绍了 Python scrapy 设置代理的两种方式（附源码）
+# http://blog.mimvp.com/2017/08/python-scrapy-she-zhi-dai-li-de-liang-zhong-fang-shi-fu-yuan-ma/
+
+
+import scrapy
+ 
+ 
+################################ 方式1：直接代码设置代理 ################################
+        
+        
+class MimvpSpider(scrapy.spiders.Spider):
+    name = "mimvp"
+    allowed_domains = ["mimvp.com"]
+    start_urls = [
+        "http://proxy.mimvp.com/exist.php",
+        "https://proxy.mimvp.com/exist.php",
+    ]
+ 
+    ## 代理设置方式1：直接在代理里设置
+    def start_requests(self):
+        urls = [
+            "http://proxy.mimvp.com/exist.php",
+            "https://proxy.mimvp.com/exist.php",
+        ]
+        for url in urls:
+            meta_proxy = ""
+            if url.startswith("http://"):
+                meta_proxy = "http://180.96.27.12:88"           # http代理
+            elif url.startswith("https://"):
+                meta_proxy = "http://109.108.87.136:53281"      # https代理
+                
+            yield scrapy.Request(url=url, callback=self.parse, meta={'proxy': meta_proxy})
+
+
+    def parse(self, response):
+        mimvp_url = response.url                    # 爬取时请求的url
+        body = response.body                        # 返回网页内容
+        
+        print("mimvp_url : " + str(mimvp_url))
+        print("body : " + str(body))
+        
+        
+        
+        
+################################ 方式2：配置文件设置代理 ################################
+        
+        
+# 配置文件设置代理，需要同时在 middlewares.py + settings.py 两个文件里配置，详细步骤：
+
+## a） middlewares.py 文件里，添加代码：
+## 代理设置方式2： 通过 middlewares.py + settings.py 配置文件设置
+## mimvp custom by yourself
+class ProxyMiddleware(object):
+    def process_request(self,request,spider):
+      
+        if request.url.startswith("http://"):
+            request.meta['proxy']="http://180.96.27.12:88"          # http代理
+        elif request.url.startswith("https://"):
+            request.meta['proxy']="http://109.108.87.136:53281"         # https代理
+                  
+#         # proxy authentication
+#         proxy_user_pass = "USERNAME:PASSWORD"
+#         encoded_user_pass = base64.encodestring(proxy_user_pass)
+#         request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
+
+
+## b）settings.py 文件里，开启设置 DOWNLOADER_MIDDLEWARES
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,  
+    'mimvp_proxy_python_scrapy.middlewares.ProxyMiddleware': 100,  
+
+
+## c） 代码里编写爬虫
+## vim  mimvp_spider.py
+import scrapy
+  
+class MimvpSpider(scrapy.spiders.Spider):
+    name = "mimvp"
+    allowed_domains = ["mimvp.com"]
+    start_urls = [
+        "http://proxy.mimvp.com/exist.php",
+        "https://proxy.mimvp.com/exist.php",
+    ]
+ 
+ 
+    def parse(self, response):
+        mimvp_url = response.url                    # 爬取时请求的url
+        body = response.body                        # 返回网页内容
+         
+        print("mimvp_url : " + str(mimvp_url))
+        print("body : " + str(body))
+        
+        
+## 运行命令：
+## scrapy crawl mimvp --nolog
+		</code></pre>
+	</section>
+	
+	<section id="content-ruby">
+		<h1>Ruby 示例</h1>
+		<pre><code class="language-ruby">#!/usr/bin/env ruby
+#
+# Ruby 支持 http
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2017-03-21
+
+
+require 'rubygems' 
+require 'net/http' 
+require 'open-uri' 
+require 'timeout' 
+
+
+mimvp_url = "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js"
+
+$proxy = '183.222.102.95:8080'
+
+$proxy_addr = $proxy.split(':')[0].strip
+$proxy_port = $proxy.split(':')[1].strip
+
+puts $proxy_addr
+puts $proxy_port
+
+
+begin 
+  Timeout.timeout(30) {
+    
+    # mimvp_url = http://proxy.mimvp.com/exist.php
+    # uri.host = proxy.mimvp.com
+    # uri.port = 80
+    # uri.path = /exist.php
+    uri = URI.parse(mimvp_url)
+    result = Net::HTTP.new(uri.host, nil, $proxy_addr, $proxy_port).start { |http|
+      http.get(uri.path)
+    }
+    puts result.body
+  
+
+    # mimvp_url = http://proxy.mimvp.com/exist.php
+    # uri.host = proxy.mimvp.com
+    # uri.port = 80
+    # uri.path = /exist.php
+    # req = #<Net::HTTP::Get:0x007fafa594ff78>
+    uri = URI.parse(mimvp_url)
+    req = Net::HTTP::Get.new(uri.path)
+    result = Net::HTTP::Proxy($proxy_addr, $proxy_port).start(uri.host, uri.port) {|http| 
+      http.request(req)
+    } 
+    puts result.body
+    
+    
+#    # proxy auth （NO TEST）
+#    $proxy_addr = 'proxy addr'
+#    $proxy_port = 'proxy_port'
+#    $proxy_user = 'username'                # 代理用户名
+#    $proxy_pass = 'password'                # 代理密码
+#    
+#    $website_username = 'website_username'  # 目标网站登录用户名
+#    $website_password = 'website_password'  # 目标网站登录密码
+#    
+#    uri = URI.parse(mimvp_url)
+#    req = Net::HTTP::Get.new(uri.path)
+#    req.basic_auth($website_username, $website_password)
+#    
+#    result = Net::HTTP::Proxy($proxy_addr, $proxy_port, $proxy_user, $proxy_pass).start(uri.host, uri.port) {|http| 
+#      http.request(req)
+#    } 
+#    puts result.body
+    
+}
+rescue => e  
+    puts e.inspect  
+    exit  
+end 
+
+
+## 运行命令： ruby mimvp-proxy-ruby.rb
+		</code></pre>
+	</section>
+	
+	<section id="content-selenium-java">
+		<h1>Selenium Java 示例<font style="font-weight:normal; font-size: 0.8em; color: #00f;">（FirefoxDriver + HtmlUnitDriver）</font></h1>
+		<pre><code class="language-java">/**
+ * Selenum FirefoxDriver 支持 http、socks5
+ * 
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ * 
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ * 
+ * mimvp.com
+ * 2015-11-09
+ */
+
+
+package com.mimvp;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+
+public class MimvpProxy_FirefoxDriver {
+
+	final static String proxyUri = "103.35.171.77:8080";				// 代理服务器（HTTP, HTTPS）
+	final static String proxySocks = "50.63.167.102:18628";				// 代理服务器（Socks5）
+	final static String mimvpUrl = "http://proxy.mimvp.com/exist.php";	// 爬取网址
+	
+//	final static String firefoxBin = "D:/Program Files/Mozilla Firefox/firefox.exe";			// Windows
+//	final static String firefoxBin = "/usr/bin/firefox-bin";									// Linux
+	final static String firefoxBin = "/Applications/Firefox.app/Contents/MacOS/firefox-bin";	// Mac
+
+	public static void main(String[] args) {
+		getNoProxy();
+		getHttpProxy();
+		getSocksProxy();
+	}
+
+	// 不用代理爬取网页
+	public static void getNoProxy() {
+//		System.setProperty("webdriver.firefox.bin", firefoxBin);	// 不设置也可以
+		
+		FirefoxProfile profile = new FirefoxProfile();
+        
+        // 启动Firefox，抓取网页后，再关闭Firefox
+        FirefoxDriver driver = new FirefoxDriver(profile);
+        driver.get(mimvpUrl);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+		driver.quit();
+		driver.close();
+	}
+
+	// HTTP和HTTPS代理爬取网页
+	public static void getHttpProxy() {
+		FirefoxProfile profile = new FirefoxProfile();
+		
+		// 设置代理
+		profile.setPreference("network.proxy.type", 1);		// 0 - 不用代理； 1 - 使用代理
+		profile.setPreference("network.proxy.http", proxyUri.split(":")[0]);
+        profile.setPreference("network.proxy.http_port", Integer.parseInt(proxyUri.split(":")[1]));
+        profile.setPreference("network.proxy.ssl", proxyUri.split(":")[0]);
+        profile.setPreference("network.proxy.ssl_port", Integer.parseInt(proxyUri.split(":")[1]));
+        profile.setPreference("network.proxy.no_proxies_on", "localhost");
+        
+//        // 代理设置用户名和密码，无密码的代理无需配置
+//        profile.setPreference("username", "mimvp-user");
+//        profile.setPreference("password", "mimvp-pwd");
+
+        FirefoxDriver driver = new FirefoxDriver(profile);
+        driver.get(mimvpUrl);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+		driver.close();
+	}
+
+	// Socks5代理爬取网页
+	public static void getSocksProxy() {
+		FirefoxProfile profile = new FirefoxProfile();
+		
+		// 设置代理
+		profile.setPreference("network.proxy.type", 1);		// 0 - 不用代理； 1 - 使用代理
+		profile.setPreference("network.proxy.socks", proxySocks.split(":")[0]);
+	    profile.setPreference("network.proxy.socks_port", Integer.parseInt(proxySocks.split(":")[1]));
+        profile.setPreference("network.proxy.no_proxies_on", "localhost");
+
+        FirefoxDriver driver = new FirefoxDriver(profile);
+        driver.get(mimvpUrl);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+		driver.close();
+	}
+}
+		
+-----------------------------------------
+		
+/**
+ * Selenum HtmlUnitDriver 支持 http、socks5
+ * 
+ * 米扑代理示例：
+ * http://proxy.mimvp.com/demo2.php
+ * 
+ * 米扑代理购买：
+ * http://proxy.mimvp.com
+ * 
+ * mimvp.com
+ * 2015-11-09
+ */
+
+
+package com.mimvp;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.gargoylesoftware.htmlunit.DefaultCredentialsProvider;
+import com.gargoylesoftware.htmlunit.WebClient;
+
+public class MimvpProxy_HtmlUnitDriver {
+	final static String proxyUri = "183.222.102.98:8080";				// 代理服务器（HTTP）
+	final static String proxySocks = "103.14.27.174:1080";				// 代理服务器（Socks5）
+	final static String mimvpUrl = "http://proxy.mimvp.com/exist.php";	// 爬取网址
+
+	public static void main(String[] args) {
+		getNoProxy();
+		getHttpProxy();
+		getSocksProxy();
+		getAuthProxy();
+		getBaiduSearch("米扑科技");
+	}
+
+	// 不用代理爬取网页
+	public static void getNoProxy() {
+		HtmlUnitDriver driver = new HtmlUnitDriver(true);	// enable javascript
+		driver.setJavascriptEnabled(true);
+		driver.get(mimvpUrl);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+	}
+	
+	
+	// HTTP代理爬取网页
+	public static void getHttpProxy() {
+		HtmlUnitDriver driver = new HtmlUnitDriver(true);	// enable javascript
+		
+		// 方法1
+		driver.setProxy(proxyUri.split(":")[0], Integer.parseInt(proxyUri.split(":")[1]));		// proxyUri = "183.222.102.98:8080"
+		
+		// 方式2
+		driver.setHTTPProxy(proxyUri.split(":")[0], Integer.parseInt(proxyUri.split(":")[1]), null);	// proxyUri = "183.222.102.98:8080"
+
+		// 方法3
+		Proxy proxy = new Proxy();
+		proxy.setHttpProxy(proxyUri);		// 设置代理服务器地址, proxyUri = "183.222.102.98:8080"
+		driver.setProxySettings(proxy);
+		
+		driver.get(mimvpUrl);
+		
+		String html = driver.getPageSource();
+		System.out.println(html);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+	}
+
+	
+	// Socks5代理爬取网页
+	public static void getSocksProxy() {
+		HtmlUnitDriver driver = new HtmlUnitDriver(true);	// enable javascript
+		
+		// 方式1
+		driver.setSocksProxy(proxySocks.split(":")[0], Integer.parseInt(proxySocks.split(":")[1]));			// proxySocks = "183.239.240.138:1080"
+		
+		// 方式2
+		driver.setSocksProxy(proxySocks.split(":")[0], Integer.parseInt(proxySocks.split(":")[1]), null);	// proxySocks = "183.239.240.138:1080"
+		
+		driver.get(mimvpUrl);
+		
+		String html = driver.getPageSource();
+		System.out.println(html);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+	}
+
+	
+	// 代理需要用户名和密码
+	public static void getAuthProxy() {
+		HtmlUnitDriver driver = null;
+		
+		final String proxyUser = "mimvp-user";
+        final String proxyPass = "mimvp-pwd";
+        
+		Proxy proxy = new Proxy();
+		proxy.setHttpProxy(proxyUri);	
+
+		// 设置代理的用户名和密码
+		DesiredCapabilities capabilities = DesiredCapabilities.htmlUnit();
+		capabilities.setCapability(CapabilityType.PROXY, proxy);
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setPlatform(Platform.WIN8_1);
+		driver = new HtmlUnitDriver(capabilities) {
+			@Override
+			protected WebClient modifyWebClient(WebClient client) {
+				DefaultCredentialsProvider creds = new DefaultCredentialsProvider();
+				creds.addCredentials(proxyUser, proxyPass);
+				client.setCredentialsProvider(creds);
+				return client;
+			}
+		};
+		driver.setJavascriptEnabled(true);	// enable javascript
+		driver.get(mimvpUrl);
+		String title = driver.getTitle();
+		System.out.println(title);			// 检测收录 - 米扑代理
+	}
+
+	
+	// 进行百度搜索
+	public static void getBaiduSearch(String keyword) {
+		final String url = "http://www.baidu.com";
+		WebDriver driver = new HtmlUnitDriver(false);
+		driver.get(url);
+		driver.findElement(By.id("kw")).sendKeys(keyword);
+		Actions action = new Actions(driver);
+		action.sendKeys(Keys.ENTER).perform();
+		String html = driver.getPageSource();
+		System.out.println(html);
+	}
+}
+		
+		</code></pre>
+	</section>
+	
+	<section id="content-selenium-python">
+		<h1>Selenium Python 示例<font style="font-weight:normal; font-size: 0.8em; color: #00f;">（PhantomJS）</font></h1>
+		<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+#
+# Selenium PhantomJS 支持 http、socks5
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+# 
+# 米扑代理购买：
+# http://proxy.mimvp.com
+# 
+# mimvp.com
+# 2017-01-08
+
+
+from selenium import webdriver
+
+
+proxy_http = "http://138.68.165.154:3128"
+proxy_socks5 = "socks5://209.151.135.126:11747"
+
+mimvp_url = "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+mimvp_url3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js"
+
+
+
+# urllib2 支持 http, https
+def test_http(proxy, mimvp_url):
+    
+    proxy_type = proxy.split("://")[0]
+    proxy_ip = proxy.split("://")[1].split(":")[0]
+    proxy_port = int(proxy.split("://")[1].split(":")[1])
+    
+    # 使用PhantomJS命令，因PhantomJS仅支持http、socks5，所以Selenium Webdriver也只支持http、socks5
+    service_args = [
+            "--proxy-type=%(http)s" % {"http" : proxy_type},
+            "--proxy=%(host)s:%(port)s" % {
+                "host" : proxy_ip,
+                "port" : proxy_port,
+            },
+    #         "--proxy-auth=%(user)s:%(pass)s" % {
+    #             "user" : 'mimvp-user',
+    #             "pass" : 'mimvp-pass',
+    #         },
+        ]
+    
+    phantomjs_path = r"/opt/phantomjs-2.1.1/bin/phantomjs"
+    
+    driver = webdriver.PhantomJS(executable_path=phantomjs_path, service_args=service_args)
+    driver.get(mimvp_url)
+    
+    print driver.title
+    print driver.page_source.encode("utf-8")
+    
+    driver.quit()      
+
+
+
+if __name__ == "__main__":
+    # http, socks5
+    test_http(proxy_http, mimvp_url)   
+    test_http(proxy_socks5, mimvp_url)   
+		</code></pre>
+	</section>
+	
+	<section id="content-shell">
+		<h1>Shell curl wget 示例</h1>
+		<pre><code class="language-perl">#!/bin/bash
+#
+# curl 支持 http、https、socks4、socks5
+# wget 支持 http、https
+#
+# 米扑代理示例：
+# http://proxy.mimvp.com/demo2.php
+#
+# 米扑代理购买：
+# http://proxy.mimvp.com
+#
+# mimvp.com
+# 2015-11-09
+
+
+# http代理格式 		http_proxy=http://IP:Port
+# https代理格式 		https_proxy=http://IP:Port
+
+{'http': 'http://120.77.176.179:8888'}
+curl -m 30 --retry 3 -x http://120.77.176.179:8888 http://proxy.mimvp.com/exist.php        				# http_proxy
+wget -T 30 --tries 3 -e "http_proxy=http://120.77.176.179:8888" http://proxy.mimvp.com/exist.php  		# http_proxy
+
+{'https': 'http://46.105.214.133:3128'}
+curl -m 30 --retry 3 --proxy-insecure -x http://46.105.214.133:3128 -k https://proxy.mimvp.com/exist.php        			# https_proxy
+wget -T 30 --tries 3 --no-check-certificate -e "https_proxy=http://46.105.214.133:3128" https://proxy.mimvp.com/exist.php	# https_proxy
+
+    
+# curl  支持socks
+{'socks4': '101.255.17.145:1080'}
+curl -m 30 --retry 3 --socks4 101.255.17.145:1080 http://proxy.mimvp.com/exist.php
+    
+{'socks5': '82.164.233.227:45454'}
+curl -m 30 --retry 3 --socks5 82.164.233.227:45454 http://proxy.mimvp.com/exist.php
+
+
+# wget 不支持socks
+
+
+
+
+################### wget配置文件设置代理 ###################
+
+vim ~/.wgetrc
+
+http_proxy=http://120.77.176.179:8888:8080
+https_proxy=http://12.7.17.17:8888:8080
+use_proxy = on
+wait = 30
+
+wget -T 30 --tries 3 http://proxy.mimvp.com
+
+
+
+
+################### 设置临时局部代理 ###################
+
+# proxy no auth
+export http_proxy=http://120.77.176.179:8888:8080
+export https_proxy=http://12.7.17.17:8888:8080
+
+# proxy auth
+export http_proxy=http://username:password@120.77.176.179:8888:8080
+export https_proxy=http://username:password@12.7.17.17:8888:8080
+
+
+# 取消设置
+unset http_proxy
+unset https_proxy
+
+
+
+
+################### 设置系统全局代理 ###################
+
+# 修改 /etc/profile，保存并重启服务器
+sudo vim /etc/profile		# 所有人有效
+或
+sudo vim ~/.bashrc			# 所有人有效
+或
+vim ~/.bash_profile			# 个人有效
+	
+	
+# proxy no auth
+export http_proxy=http://120.77.176.179:8888:8080
+export https_proxy=http://12.7.17.17:8888:8080
+
+# proxy auth
+export http_proxy=http://username:password@120.77.176.179:8888:8080
+export https_proxy=http://username:password@12.7.17.17:8888:8080
+
+source /etc/profile
+或
+source ~/.bashrc
+或
+source ~/.bash_profile
+
+
+sudo reboot
+		</code></pre>
+	</section>
+
+	<section id="content-yiyuyan">
+		<h1>易语言 示例</h1>
+		<pre><code class="language-perl">
+		</code></pre>
+	</section>
+</main>
+</body>
+
+</html>

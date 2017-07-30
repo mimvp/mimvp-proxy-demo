@@ -1,0 +1,59 @@
+/**
+C# 支持 http、https
+
+米扑代理示例：
+http://proxy.mimvp.com/demo2.php
+
+米扑代理购买：
+http://proxy.mimvp.com
+
+mimvp.com
+2015-11-09
+*/
+ 
+using System;
+using System.IO;
+using System.Net;
+using System.Text;
+ 
+namespace ConsoleApplication1
+{
+    class Program
+    {
+    	// 代码级代理
+        public static void Main(string[] args)
+        {
+            System.Net.WebProxy proxy = new WebProxy("218.21.230.156", 443);        // "107.150.96.188", 8080
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://proxy.mimvp.com/exist.php");
+            request.Proxy = proxy;
+            using (WebResponse response = request.GetResponse())
+            {
+                using (TextReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                        Console.WriteLine(line);
+                }
+            }
+        }
+ 
+ 		// 系统变量级代理
+        public static void Main2()
+        {
+            // your code goes here
+            System.Net.WebProxy proxy = new WebProxy("107.150.96.188", 8080);
+            System.Net.HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://proxy.mimvp.com/exist.php");
+            req.Proxy = proxy;
+            req.Timeout = 30 * 1000;
+            System.Net.HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            Encoding bin = Encoding.GetEncoding("UTF-8");
+            StreamReader reader = new StreamReader(resp.GetResponseStream(), bin);
+            string str = reader.ReadToEnd();
+            Console.WriteLine(str);
+         
+            reader.Close();
+            reader.Dispose();
+        }
+    }
+}
+    
