@@ -1,9 +1,9 @@
-; AutohotKey Ö§³Ö http
+; AutohotKey æ”¯æŒ http
 ;
-; Ã×ÆË´úÀíÊ¾Àı£º
+; ç±³æ‰‘ä»£ç†ç¤ºä¾‹ï¼š
 ; http://proxy.mimvp.com/demo2.php
 ; 
-; Ã×ÆË´úÀí¹ºÂò£º
+; ç±³æ‰‘ä»£ç†è´­ä¹°ï¼š
 ; http://proxy.mimvp.com
 ; 
 ; mimvp.com

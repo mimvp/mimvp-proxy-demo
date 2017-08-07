@@ -1,9 +1,9 @@
-; AutohotKey Ö§³Ö http
+; AutohotKey æ”¯æŒ http
 ;
-; Ã×ÆË´úÀíÊ¾Àı£º
+; ç±³æ‰‘ä»£ç†ç¤ºä¾‹ï¼š
 ; http://proxy.mimvp.com/demo2.php
 ; 
-; Ã×ÆË´úÀí¹ºÂò£º
+; ç±³æ‰‘ä»£ç†è´­ä¹°ï¼š
 ; http://proxy.mimvp.com
 ; 
 ; mimvp.com
@@ -13,10 +13,10 @@
 MIMVP_PROXY_NOAUTH := 2
 MIMVP_PROXY_AUTH := 1
 
-;~ ´úÀí·şÎñÆ÷
+;~ ä»£ç†æœåŠ¡å™¨
 proxy_http := "138.68.165.154:3128"
 
-;~ Òª·ÃÎÊµÄÄ¿±êÒ³Ãæ
+;~ è¦è®¿é—®çš„ç›®æ ‡é¡µé¢
 mimvp_url := "http://proxy.mimvp.com/exist.php"
 mimvp_url2 = "https://proxy.mimvp.com/exist.php"
 
@@ -24,22 +24,22 @@ whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 whr.SetTimeouts(30000,30000,30000,30000) 			;~ Set timeouts to 30 seconds
 
 whr.Open("GET", mimvp_url, true)
-whr.SetRequestHeader("User-Agent", "curl/7.41.0")	;~ Ä£ÄâcurlµÄua£¬·½±ã²âÊÔ
+whr.SetRequestHeader("User-Agent", "curl/7.41.0")	;~ æ¨¡æ‹Ÿcurlçš„uaï¼Œæ–¹ä¾¿æµ‹è¯•
 
 
-;~ ÉèÖÃ´úÀí·şÎñÆ÷
+;~ è®¾ç½®ä»£ç†æœåŠ¡å™¨
 whr.SetProxy(MIMVP_PROXY_NOAUTH, proxy_http)
 
-;~ ÉèÖÃ´úÀíËíµÀÑéÖ¤ĞÅÏ¢
+;~ è®¾ç½®ä»£ç†éš§é“éªŒè¯ä¿¡æ¯
 ;whr.SetCredentials('mimvp-user', 'mimvp-pass', MIMVP_PROXY_AUTH)
 
 whr.Send()
 whr.WaitForResponse()
 
-MsgBox % whr.ResponseText  ; ÊäÈëµ½ÏûÏ¢¿ò£¬ÍøÒ³ÄÚÈİÌ«³¤ÔòÏÔÊ¾²»ÍêÕû
+MsgBox % whr.ResponseText  ; è¾“å…¥åˆ°æ¶ˆæ¯æ¡†ï¼Œç½‘é¡µå†…å®¹å¤ªé•¿åˆ™æ˜¾ç¤ºä¸å®Œæ•´
 
 
-; ´ò¿ª¶Ô»°¿òÑ¡ÔñÎÄ¼ş£¬Ğ´ÈëÍêÕûµÄÍøÒ³ÄÚÈİ
+; æ‰“å¼€å¯¹è¯æ¡†é€‰æ‹©æ–‡ä»¶ï¼Œå†™å…¥å®Œæ•´çš„ç½‘é¡µå†…å®¹
 FileSelectFile, resultName, S16,, Create a new file:
 if (resultName = "")
 	return
@@ -47,7 +47,7 @@ if (resultName = "")
 outFile := FileOpen(resultName , "w" , "utf-8")
 if !IsObject(outFile)
 {
-	MsgBox , ²»ÄÜ´ò¿ªÎÄ¼ş: %resultName%
+	MsgBox , ä¸èƒ½æ‰“å¼€æ–‡ä»¶: %resultName%
 	return 
 }
 outFile.write(whr.ResponseText)

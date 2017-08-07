@@ -27,6 +27,15 @@ body {
   color: #555;
 }
 
+.demo_content {
+	max-width: 1200px;
+	width: 100%;
+	margin: 50px auto;
+	margin-top: 20px;
+	padding: 5px;
+	text-align: center;
+}
+
 h1 {
   padding: 10px 10px;
   font-weight: bold;/* 
@@ -115,126 +124,353 @@ input:checked + label {
 }
 
 </style>
-<script src="/js/prism-default.js"></script>
-<link href="/css/prism-default.css" rel="stylesheet">
+<script src="./cssjs/prism-default.js"></script>
+<script src="./cssjs/jquery.min.js"></script>
+<link href="./cssjs/prism-default.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-<main>
-	  <input id="tab-autohotkey" type="radio" name="tabs" checked>
-	  <label for="tab-autohotkey">AutohotKey</label>
+
+<div class="demo_content">
+
+	<h1>米扑代理之编程示例</h1>
+	<h3><a target="_blank" href="http://proxy.mimvp.com/demo2.php#demo-main-div">http://proxy.mimvp.com/demo2.php</a></h3>
+					
+	<div class="desc">
+		<table border="1" cellpadding="5" style="width: 100%; margin: 50px auto; text-align: center; font-size: 16px; line-height:36px; border-color: #555; border-collapse:collapse;">
+			<tr style="background-color: #ddd;">
+				<td colspan="6" style="font-size: 20px; font-weight: bold; line-height: 50px;">
+				主流编程语言支持代理汇总表
+				<p style="font-size: 16px; font-weight: normal;">（米扑代理原创，2017.07.30）</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang-title">编程语言</td>
+				<td class="demo-demo-suffix-title">后缀</td>
+				<td class="demo-demo-http-title">HTTP</td>
+				<td class="demo-demo-https-title">HTTPS</td>
+				<td class="demo-demo-socks4-title">Socks4</td>
+				<td class="demo-demo-socks5-title">Socks5</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">AutoHotkey</td>
+				<td class="demo-demo-suffix">.ahk</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">C#</td>
+				<td class="demo-demo-suffix">.cs</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Delphi</td>
+				<td class="demo-demo-suffix">.dpr</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Go</td>
+				<td class="demo-demo-suffix">.go</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Groovy</td>
+				<td class="demo-demo-suffix">.groovy</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">HTTPie</td>
+				<td class="demo-demo-suffix">.sh</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">Java</font></td>
+				<td class="demo-demo-suffix">.java</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">NodeJS</font></td>
+				<td class="demo-demo-suffix">.js</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">PhantomJS</td>
+				<td class="demo-demo-suffix">.js</td>
+				<td>Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Perl</td>
+				<td class="demo-demo-suffix">.pl</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">PHP</font></td>
+				<td class="demo-demo-suffix">.php</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">Python2</font></td>
+				<td class="demo-demo-suffix">.py</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">Python3</font></td>
+				<td class="demo-demo-suffix">.py</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Python pyspide</td>
+				<td class="demo-demo-suffix">.py</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr class="demo-tr-highlight" style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">Python requests</font></td>
+				<td class="demo-demo-suffix">.py</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Python scrapy</td>
+				<td class="demo-demo-suffix">.py</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Ruby</td>
+				<td class="demo-demo-suffix">.rb</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Selenium Java 示例</td>
+				<td class="demo-demo-suffix">.java</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">Selenium Python</td>
+				<td class="demo-demo-suffix">.py</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr style="background-color: #eee;">
+				<td class="demo-demo-lang demo-td-highlight"><font color="red">Shell</font></td>
+				<td class="demo-demo-suffix">.sh</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+				<td class="demo-td-highlight">Y</td>
+			</tr>
+			<tr>
+				<td class="demo-demo-lang">易语言</td>
+				<td class="demo-demo-suffix">.e</td>
+				<td class="demo-td-highlight">Y</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+		</table>
+	</div>
+					
+				
+<div class="demo-main-div" id="demo-main-div" >
+	<main class="demo-main">
+	  <input class="demo-input-tab" id="tab-autohotkey" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-autohotkey">AutohotKey</label>
 	
-	  <input id="tab-csharp" type="radio" name="tabs">
-	  <label for="tab-csharp">C#</label>
+	  <input class="demo-input-tab" id="tab-csharp" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-csharp">C#</label>
 	
-	  <input id="tab-delphi" type="radio" name="tabs">
-	  <label for="tab-delphi">Delphi</label>
+	  <input class="demo-input-tab" id="tab-delphi" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-delphi">Delphi</label>
 	
-	  <input id="tab-go" type="radio" name="tabs">
-	  <label for="tab-go">Go</label>
+	  <input class="demo-input-tab" id="tab-go" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-go">Go</label>
 	
-	  <input id="tab-groovy" type="radio" name="tabs" checked>
-	  <label for="tab-groovy">Groovy</label>
+	  <input class="demo-input-tab" id="tab-groovy" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-groovy">Groovy</label>
 	
-	  <input id="tab-httpie" type="radio" name="tabs">
-	  <label for="tab-httpie">HTTPie</label>
+	  <input class="demo-input-tab" id="tab-httpie" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-httpie">HTTPie</label>
 	
-	  <input id="tab-java" type="radio" name="tabs">
-	  <label for="tab-java">Java</label>
-	
-	
-	  <input id="tab-nodejs" type="radio" name="tabs">
-	  <label for="tab-nodejs">NodeJS</label>
-	
-	  <input id="tab-phantomjs" type="radio" name="tabs" checked>
-	  <label for="tab-phantomjs">PhantomJS</label>
-	
-	  <input id="tab-perl" type="radio" name="tabs">
-	  <label for="tab-perl">Perl</label>
-	
-	  <input id="tab-php" type="radio" name="tabs">
-	  <label for="tab-php">PHP</label>
-	
-	  <input id="tab-python2" type="radio" name="tabs">
-	  <label for="tab-python2">Python2</label>
-	
-	  <input id="tab-python3" type="radio" name="tabs">
-	  <label for="tab-python3">Python3</label>
-	
-	  <input id="tab-python-pyspider" type="radio" name="tabs">
-	  <label for="tab-python-pyspider">Python pyspider</label>
+	  <input class="demo-input-tab" id="tab-java" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-java">Java</label>
 	
 	
+	  <input class="demo-input-tab" id="tab-nodejs" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-nodejs">NodeJS</label>
 	
-	  <input id="tab-python-requests" type="radio" name="tabs">
-	  <label for="tab-python-requests">Python requests</label>
+	  <input class="demo-input-tab" id="tab-phantomjs" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-phantomjs">PhantomJS</label>
 	
-	  <input id="tab-python-scrapy" type="radio" name="tabs">
-	  <label for="tab-python-scrapy">Python scrapy</label>
+	  <input class="demo-input-tab" id="tab-perl" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-perl">Perl</label>
 	
-	  <input id="tab-ruby" type="radio" name="tabs" checked>
-	  <label for="tab-ruby">Ruby</label>
+	  <input class="demo-input-tab" id="tab-php" type="radio" name="tabs" checked>
+	  <label class="demo-label-tab" for="tab-php">PHP</label>
 	
-	  <input id="tab-selenium-java" type="radio" name="tabs">
-	  <label for="tab-selenium-java">Selenium Java</label>
+	  <input class="demo-input-tab" id="tab-python2" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-python2">Python2</label>
 	
-	  <input id="tab-selenium-python" type="radio" name="tabs">
-	  <label for="tab-selenium-python">Selenium Python</label>
+	  <input class="demo-input-tab" id="tab-python3" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-python3">Python3</label>
 	
-	  <input id="tab-shell" type="radio" name="tabs">
-	  <label for="tab-shell">Shell curl wget</label>
+	  <input class="demo-input-tab" id="tab-python-pyspider" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-python-pyspider">Python pyspider</label>
 	
-	  <input id="tab-yiyuyan" type="radio" name="tabs">
-	  <label for="tab-yiyuyan">易语言</label>
+	
+	
+	  <input class="demo-input-tab" id="tab-python-requests" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-python-requests">Python requests</label>
+	
+	  <input class="demo-input-tab" id="tab-python-scrapy" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-python-scrapy">Python scrapy</label>
+	
+	  <input class="demo-input-tab" id="tab-ruby" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-ruby">Ruby</label>
+	
+	  <input class="demo-input-tab" id="tab-selenium-java" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-selenium-java">Selenium Java</label>
+	
+	  <input class="demo-input-tab" id="tab-selenium-python" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-selenium-python">Selenium Python</label>
+	
+	  <input class="demo-input-tab" id="tab-shell" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-shell">Shell curl wget</label>
+	
+	  <input class="demo-input-tab" id="tab-yiyuyan" type="radio" name="tabs">
+	  <label class="demo-label-tab" for="tab-yiyuyan">易语言</label>
 
 
-  <section id="content-autohotkey">
-  	<h1>AutohotKey 示例</h1>
-    <pre><code class="language-perl"># AutohotKey 支持 http
-#
-# 米扑代理示例：
-# http://proxy.mimvp.com/demo2.php
-# 
-# 米扑代理购买：
-# http://proxy.mimvp.com
-# 
-# mimvp.com
-# 2016-11-29
+  <section class="demo-section" id="content-autohotkey">
+  	<h1 class="demo-h1">AutohotKey 示例</h1>
+    <pre><code class="language-php">; AutoHotkey 支持 http
+;
+; 米扑代理示例：
+; http://proxy.mimvp.com/demo2.php
+; 
+; 米扑代理购买：
+; http://proxy.mimvp.com
+; 
+; mimvp.com
+; 2016-11-29
+;
+; AutoHotkey 安装与开发，请参考米扑博客，附有源代码：
+; http://blog.mimvp.com/2017/09/autohotkey-an-zhuang-yu-kai-fa/
+ 
+
+; ========== 代理设置方式1 ==========
+URL := "http://proxy.mimvp.com/exist.php"
+RESULT_FILE := "result_curl.txt"
+MIMVP_PROXY := "138.68.165.154:3128"
+ 
+Runcurl = curl.exe "%URL%" -x "%MIMVP_PROXY%" -o "%RESULT_FILE%"
+;Runcurl = curl.exe "%URL%" -x user:password@proxyhost:port -o "%RESULT_FILE%"
+Runwait, %comspec% /c %RunCurl%, , Hide
 
 
-HTTPREQUEST_PROXYSETTING_PROXY := 2
-HTTPREQUEST_SETCREDENTIALS_FOR_PROXY := 1
 
+; ========== 代理设置方式2 ==========
+MIMVP_PROXY_NOAUTH := 2
+MIMVP_PROXY_AUTH := 1
+ 
 ;~ 代理服务器
-proxy_http := "138.68.165.154:3128"
-
+MIMVP_PROXY := "138.68.165.154:3128"
+ 
 ;~ 要访问的目标页面
 mimvp_url := "http://proxy.mimvp.com/exist.php"
 mimvp_url2 = "https://proxy.mimvp.com/exist.php"
-
+ 
 whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+whr.SetTimeouts(30000,30000,30000,30000)             ;~ Set timeouts to 30 seconds
+ 
 whr.Open("GET", mimvp_url, true)
-
-;~ 模拟curl的ua，方便测试
-whr.SetRequestHeader("User-Agent", "curl/7.41.0")
-
+whr.SetRequestHeader("User-Agent", "curl/7.41.0")    ;~ 模拟curl的ua
+ 
+ 
 ;~ 设置代理服务器
-whr.SetProxy(HTTPREQUEST_PROXYSETTING_PROXY, proxy_http)
-
+whr.SetProxy(MIMVP_PROXY_NOAUTH, MIMVP_PROXY)
+ 
 ;~ 设置代理隧道验证信息
-whr.SetCredentials('mimvp-user', 'mimvp-pass', HTTPREQUEST_SETCREDENTIALS_FOR_PROXY)
-
+;whr.SetCredentials('mimvp-user', 'mimvp-pass', MIMVP_PROXY_AUTH)
+ 
 whr.Send()
 whr.WaitForResponse()
-
-MsgBox % whr.ResponseText   
+ 
+MsgBox % whr.ResponseText  ; 输入到消息框，网页内容太长则显示不完整
+ 
+ 
+; 打开对话框选择文件，写入完整的网页内容
+FileSelectFile, resultName, S16,, Create a new file:
+if (resultName = "")
+    return
+     
+outFile := FileOpen(resultName , "w" , "utf-8")
+if !IsObject(outFile)
+{
+    MsgBox , 不能打开文件: %resultName%
+    return
+}
+outFile.write(whr.ResponseText)
+outFile.Close()
     </code></pre>
   </section>
 
-  <section id="content-csharp">
-  	<h1>C# 示例</h1>
+  <section class="demo-section" id="content-csharp">
+  	<h1 class="demo-h1">C# 示例</h1>
     <pre><code class="language-csharp">/**
 C# 支持 http、https
 
@@ -296,9 +532,9 @@ namespace ConsoleApplication1
     </code></pre>
   </section>
 
-  <section id="content-delphi">
-    <h1>Delphi 示例</h1>
-    <pre><code class="language-delphi"># Delphi 支持 http
+  <section class="demo-section" id="content-delphi">
+    <h1 class="demo-h1">Delphi 示例</h1>
+    <pre><code class="language-php"># Delphi 支持 http
 #
 # 米扑代理示例：
 # http://proxy.mimvp.com/demo2.php
@@ -371,8 +607,8 @@ end.
     </code></pre>
   </section>
 
-  <section id="content-go">
-  	<h1>Go 示例</h1>
+  <section class="demo-section" id="content-go">
+  	<h1 class="demo-h1">Go 示例</h1>
     <pre><code class="language-go">/**
 * go 支持 http、socks5
 *
@@ -551,8 +787,8 @@ func main() {
     </code></pre>
   </section>
 
-  <section id="content-groovy">
-    <h1>Groovy 示例</h1>
+  <section class="demo-section" id="content-groovy">
+    <h1 class="demo-h1">Groovy 示例</h1>
     <pre><code class="language-groovy">/**
  * Groovy 支持 http
  *
@@ -623,8 +859,8 @@ class MimvpSpider {
     </code></pre>
   </section>
 
-  <section id="content-httpie">
-    <h1>HTTPie 示例</h1>
+  <section class="demo-section" id="content-httpie">
+    <h1 class="demo-h1">HTTPie 示例</h1>
     <pre><code class="language-perl">#!/bin/bash
 #
 # http 支持 http、https
@@ -666,8 +902,8 @@ http --verify no --proxy "https:46.105.214.133:3128" https://proxy.mimvp.com/exi
     </code></pre>
   </section>
 
-  <section id="content-java">
-    <h1>Java 示例</h1>
+  <section class="demo-section" id="content-java">
+    <h1 class="demo-h1">Java 示例</h1>
     <pre><code class="language-java">/**
  * Java 支持 http、https、socks4、socks5
  * 
@@ -970,8 +1206,8 @@ public class MimvpProxyJava {
 
 
 
-  <section id="content-nodejs">
-    <h1>NodeJS 示例</h1>
+  <section class="demo-section" id="content-nodejs">
+    <h1 class="demo-h1">NodeJS 示例</h1>
     <pre><code class="language-javascript">/**
  * NodeJS 支持 http、https、socks4、socks5
  * 
@@ -1188,8 +1424,8 @@ check_socksproxyagent(proxy_socks5, mimvp_url);		// socks5
     </code></pre>
   </section>
 
-  <section id="content-phantomjs">
-    <h1>PhantomJS 示例</h1>
+  <section class="demo-section" id="content-phantomjs">
+    <h1 class="demo-h1">PhantomJS 示例</h1>
     <pre><code class="language-javascript">/**
  * PhantomJS 支持 http、socks5
  * 
@@ -1250,8 +1486,8 @@ page.open(mimvp_url, {}, function(status) { 		// http
     </code></pre>
   </section>
 
-	<section id="content-perl">
-	  <h1>Perl 示例</h1>
+	<section class="demo-section" id="content-perl">
+	  <h1 class="demo-h1">Perl 示例</h1>
 	  <pre><code class="language-perl">#!/usr/bin/env perl 
 #
 # Perl 支持 http、https
@@ -1402,8 +1638,8 @@ test_connect($mimvp_url2, %proxy_connect);	# https (connect)
 	  </code></pre>
 	</section>
 
-  <section id="content-php">
-    <h1>PHP 示例</h1>
+  <section class="demo-section" id="content-php">
+    <h1 class="demo-h1">PHP 示例</h1>
     <pre><code class="language-php">/**
  * PHP 支持 http、https、socks4、socks5、tcp
  * 
@@ -1520,8 +1756,8 @@ function proxy_stream($proxy_uri, $mimvp_url) {
 	  	</code></pre>
 	</section>
 	
-	<section id="content-python2">
-		<h1>Python2 示例</h1>
+	<section class="demo-section" id="content-python2">
+		<h1 class="demo-h1">Python2 示例</h1>
 		<pre><code class="language-perl">#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
@@ -1625,8 +1861,8 @@ if __name__ == "__main__":
 		</code></pre>
 	</section>
 	
-	<section id="content-python3">
-		<h1>Python3 示例</h1>
+	<section class="demo-section" id="content-python3">
+		<h1 class="demo-h1">Python3 示例</h1>
 		<pre><code class="language-perl">#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 #
@@ -1730,8 +1966,8 @@ if __name__ == "__main__":
 		</code></pre>
 	</section>
 	
-	<section id="content-python-pyspider">
-		<h1>Python pyspider 示例</h1>
+	<section class="demo-section" id="content-python-pyspider">
+		<h1 class="demo-h1">Python pyspider 示例</h1>
 		<pre><code class="language-perl">#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 # Project: mimvp_proxy_pyspider
@@ -1818,8 +2054,8 @@ pyspider --phantomjs-proxy "188.226.141.217:8080" all
 	
 	
 	
-	<section id="content-python-requests">
-		<h1>Python requests 示例</h1>
+	<section class="demo-section" id="content-python-requests">
+		<h1 class="demo-h1">Python requests 示例</h1>
 		<pre><code class="language-perl">#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 #
@@ -1904,8 +2140,8 @@ print("mimvp text : " + req.text)
 		</code></pre>
 	</section>
 
-	<section id="content-python-scrapy">
-		<h1>Python scrapy 示例</h1>
+	<section class="demo-section" id="content-python-scrapy">
+		<h1 class="demo-h1">Python scrapy 示例</h1>
 		<pre><code class="language-python">#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
@@ -2024,8 +2260,8 @@ class MimvpSpider(scrapy.spiders.Spider):
 		</code></pre>
 	</section>
 	
-	<section id="content-ruby">
-		<h1>Ruby 示例</h1>
+	<section class="demo-section" id="content-ruby">
+		<h1 class="demo-h1">Ruby 示例</h1>
 		<pre><code class="language-ruby">#!/usr/bin/env ruby
 #
 # Ruby 支持 http
@@ -2115,8 +2351,8 @@ end
 		</code></pre>
 	</section>
 	
-	<section id="content-selenium-java">
-		<h1>Selenium Java 示例<font style="font-weight:normal; font-size: 0.8em; color: #00f;">（FirefoxDriver + HtmlUnitDriver）</font></h1>
+	<section class="demo-section" id="content-selenium-java">
+		<h1 class="demo-h1">Selenium Java 示例<font style="font-weight:normal; font-size: 0.8em; color: #00f;">（FirefoxDriver + HtmlUnitDriver）</font></h1>
 		<pre><code class="language-java">/**
  * Selenum FirefoxDriver 支持 http、socks5
  * 
@@ -2352,8 +2588,8 @@ public class MimvpProxy_HtmlUnitDriver {
 		</code></pre>
 	</section>
 	
-	<section id="content-selenium-python">
-		<h1>Selenium Python 示例<font style="font-weight:normal; font-size: 0.8em; color: #00f;">（PhantomJS）</font></h1>
+	<section class="demo-section" id="content-selenium-python">
+		<h1 class="demo-h1">Selenium Python 示例<font style="font-weight:normal; font-size: 0.8em; color: #00f;">（PhantomJS）</font></h1>
 		<pre><code class="language-python">#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
@@ -2420,8 +2656,8 @@ if __name__ == "__main__":
 		</code></pre>
 	</section>
 	
-	<section id="content-shell">
-		<h1>Shell curl wget 示例</h1>
+	<section class="demo-section" id="content-shell">
+		<h1 class="demo-h1">Shell curl wget 示例</h1>
 		<pre><code class="language-perl">#!/bin/bash
 #
 # curl 支持 http、https、socks4、socks5
@@ -2523,12 +2759,112 @@ sudo reboot
 		</code></pre>
 	</section>
 
-	<section id="content-yiyuyan">
-		<h1>易语言 示例</h1>
-		<pre><code class="language-perl">
+	<section class="demo-section" id="content-yiyuyan">
+		<h1 class="demo-h1">易语言 示例</h1>
+		<pre><code class="language-php">' 易语言 支持 http
+' 
+' 米扑代理示例：
+' http://proxy.mimvp.com/demo2.php
+' 
+' 米扑代理购买：
+' http://proxy.mimvp.com
+' 
+' mimvp.com
+' 2017-07-28
+' 
+' 易语言的安装与开发，请参考米扑博客：
+' http://blog.mimvp.com/2017/08/yi-yu-yan-de-an-zhuang-yu-kai-fa/
+' 
+' 易语言的网络编程和代理示例，请参考米扑博客，附有源代码：
+' http://blog.mimvp.com/2017/08/yi-yu-yan-de-wang-luo-bian-cheng-he-dai-li-shi-li/
+
+
+' 变量声明（表格）
+.局部变量 代理地址, 文本型
+.局部变量 目标网址, 文本型
+.局部变量 代理用户名, 文本型
+.局部变量 代理密码, 文本型
+ 
+ 
+
+' 获取目标网址
+.如果 (目标网址编辑框.内容 ＝ “”)
+    目标网址 ＝ “http://proxy.mimvp.com/exist.php”
+.否则
+    目标网址 ＝ 目标网址编辑框.内容
+    
+' 获取代理地址
+.如果 (代理服务器编辑框.内容 ＝ “”)
+    代理地址 ＝ “139.59.99.113:8080”
+.否则
+    代理地址 ＝ 代理服务器编辑框.内容
+ 
+.如果结束
+ 
+输出调试文本 (“代理地址： ” ＋ 代理地址)
+ 
+' 设置代理方法1
+网页_置浏览器代理 (代理地址)  ' 通过浏览器设置，一般只支持http代理
+超文本浏览框.跳转 (目标网址编辑框.内容, , )
+ 
+ 
+' 设置代理方法2
+输出调试文本 (网页_访问S (目标网址, , , , , , , , , , 代理地址, , ))
+ 
+ 
+' 设置代理方式3（用户名 +　密码）
+输出调试文本 (网页_访问S (目标网址, , , , , , , , , , 代理地址, 代理用户名, 代理密码))
 		</code></pre>
+<br>
+<br>
+<p style="font-size: 18px; font-weight: bold; color:blue;"># 易语言源码：</p>
+<img src="./cssjs/eyuyan-demo-1.png" width="96%"  height="96%" style="max-width:795px; max-height:523px;">
+<br>
+<br>
+
+<p style="font-size: 18px; font-weight: bold; color:blue;"># 易语言代理设置：</p>
+<img src="./cssjs/eyuyan-demo-2.png" width="96%"  height="96%" style="max-width:795px; max-height:829;">
+<br>
+<br>
 	</section>
+
 </main>
+</div>
+
+</div>
+
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+		    
+    		function jump2tag(){
+    			var curr_href = window.location.href;
+    	 		if(curr_href.indexOf("#demo-item-demo") >= 0) {
+    	 	 		demo_a_href = "#demo-item-demo";
+    	 		    var height = $(demo_a_href).offset().top;
+    	 		    $(window).scrollTop(height-60);
+    	 		}
+    	 		
+    	 		if(curr_href.indexOf("#demo-main-div") >= 0 || curr_href.indexOf("#lang-") >= 0) {
+    	 	 		demo_a_href = "#demo-main-div";
+    	 		    var height = $(demo_a_href).offset().top;
+    	 		    $(window).scrollTop(height-60);
+    	 		    
+    	 	 		lang_a_href = "#tab-" + curr_href.split("#lang-")[1];
+    	 		   	$(lang_a_href).attr("checked","true"); 
+    	 		}
+    			return;
+    		}
+    		window.onload=jump2tag;			// 页面加载完毕后，再执行
+	    		
+		});
+
+	</script>
+	
+
+
+
 </body>
 
 </html>

@@ -1,2 +1,2 @@
-msgbox, 我的第一个AutoHotkey脚本 `n 我爱米扑科技
+msgbox, 鎴戠殑绗竴涓狝utoHotkey鑴氭湰 `n 鎴戠埍绫虫墤绉戞妧
 run, http://mimvp.com

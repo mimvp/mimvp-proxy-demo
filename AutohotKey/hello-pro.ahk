@@ -1,12 +1,12 @@
 #0::
-msgbox, ÕâÊÇÎÒµÄµÚÒ»¸öAutoHotkey½Å±¾ `n ÎÒ°®Ã×ÆË¿Æ¼¼
+msgbox, è¿™æ˜¯æˆ‘çš„ç¬¬ä¸€ä¸ªAutoHotkeyè„šæœ¬ `n æˆ‘çˆ±ç±³æ‰‘ç§‘æŠ€
 run, http://mimvp.com
 return
 
 #1::
 run, http://proxy.mimvp.com/usercenter/login.php
-WinActivate, Chrome ;·ÀÖ¹´°¿Ú²»¼¤»î
-winwait, Ã×ÆË´úÀí   ;µÈ´ıÍøÒ³¼ÓÔØ³É¹¦£¨ÖÁÉÙtitleÏÔÊ¾³öÀ´£©
-sleep, 500          ;±£ÏÕÆğ¼û£¬ÔÙµÈ0.5Ãë£¨ÊÓÍøËÙ£©
-send, 'mimvp-user'{tab}'mimvp-pwd'{enter}  ;Ä£Äâ¼üÈëÃ×ÆË´úÀíµÄµÇÂ¼ÓÃ»§ÃûºÍÃÜÂë¡¢»Ø³µ
+WinActivate, Chrome ;é˜²æ­¢çª—å£ä¸æ¿€æ´»
+winwait, ç±³æ‰‘ä»£ç†   ;ç­‰å¾…ç½‘é¡µåŠ è½½æˆåŠŸï¼ˆè‡³å°‘titleæ˜¾ç¤ºå‡ºæ¥ï¼‰
+sleep, 500          ;ä¿é™©èµ·è§ï¼Œå†ç­‰0.5ç§’ï¼ˆè§†ç½‘é€Ÿï¼‰
+send, 'mimvp-user'{tab}'mimvp-pwd'{enter}  ;æ¨¡æ‹Ÿé”®å…¥ç±³æ‰‘ä»£ç†çš„ç™»å½•ç”¨æˆ·åå’Œå¯†ç ã€å›è½¦
 return
