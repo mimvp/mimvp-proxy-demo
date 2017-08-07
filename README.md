@@ -18,9 +18,9 @@ What is mimvp-proxy-demo ?
 编程语言之代理协议
 ----------
 
-![sitemap.xml 示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
+![代理协议汇总](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
 
-![sitemap.xml 示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
+![编程语言示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
 
 
 
@@ -204,7 +204,7 @@ static class MyAuthenticator extends Authenticator {
 ```
 
 	
-4. Shell设置代理
+4. Shell 设置代理
 
 ```sh
 #!/bin/bash
@@ -300,15 +300,82 @@ source ~/.bash_profile
 sudo reboot
 ```
 	
+	
+5. 易语言 设置代理
+
+```php
+' 易语言 支持 http
+' 
+' 米扑代理示例：
+' http://proxy.mimvp.com/demo2.php
+' 
+' 米扑代理购买：
+' http://proxy.mimvp.com
+' 
+' mimvp.com
+' 2017-07-28
+' 
+' 易语言的安装与开发，请参考米扑博客：
+' http://blog.mimvp.com/2017/08/yi-yu-yan-de-an-zhuang-yu-kai-fa/
+' 
+' 易语言的网络编程和代理示例，请参考米扑博客，附有源代码：
+' http://blog.mimvp.com/2017/08/yi-yu-yan-de-wang-luo-bian-cheng-he-dai-li-shi-li/
+
+
+' 变量声明（表格）
+.局部变量 代理地址, 文本型
+.局部变量 目标网址, 文本型
+.局部变量 代理用户名, 文本型
+.局部变量 代理密码, 文本型
+ 
+ 
+
+' 获取目标网址
+.如果 (目标网址编辑框.内容 ＝ “”)
+    目标网址 ＝ “http://proxy.mimvp.com/exist.php”
+.否则
+    目标网址 ＝ 目标网址编辑框.内容
+    
+' 获取代理地址
+.如果 (代理服务器编辑框.内容 ＝ “”)
+    代理地址 ＝ “139.59.99.113:8080”
+.否则
+    代理地址 ＝ 代理服务器编辑框.内容
+ 
+.如果结束
+ 
+输出调试文本 (“代理地址： ” ＋ 代理地址)
+ 
+' 设置代理方法1
+网页_置浏览器代理 (代理地址)  ' 通过浏览器设置，一般只支持http代理
+超文本浏览框.跳转 (目标网址编辑框.内容, , )
+ 
+ 
+' 设置代理方法2
+输出调试文本 (网页_访问S (目标网址, , , , , , , , , , 代理地址, , ))
+ 
+ 
+' 设置代理方式3（用户名 +　密码）
+输出调试文本 (网页_访问S (目标网址, , , , , , , , , , 代理地址, 代理用户名, 代理密码))
+```
+
+![易语言使用代理示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/eyuyan-demo-1.png)
+
+![易语言使用代理示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/eyuyan-demo-2.png)
+
+
 
 注意事项
 ----------
 
-1. 指定
+1. 哪里可找到代理使用示例的引用包或依赖库？
+解答：米扑代理示例的引用包或依赖库，已经放在了mimvp-proxy-demo开源项目里的目录下了，例如：Python2.7 使用socks4/5是引用了socks.py，已经放在了目录下：https://github.com/mimvp/mimvp-proxy-demo/tree/master/Python2/socks.py
 
 
-2. 排除
+2. 如何安装配置编程语言的开发环境？
+解答：米扑代理使用示例，全部由米扑科技编写代码、测试验证，因此米扑科技搭建了全部的开发测试环境，详细配置编程语言的开发环境，请参考米扑博客：[http://blog.mimvp.com](http://blog.mimvp.com)
 
 
-3. 递归
+3. 代理使用示例里的代理从哪找？
+解答：米扑代理使用示例（mimvp-proxy-demo）中的测试代理，全部来自米扑代理[http://proxy.mimvp.com](http://proxy.mimvp.com)，其支持http、https、socks4、socks5等全部协议的代理IP，而且米扑代理覆盖全球120多个国家，中国34个省市，代理非常丰富，为全球代理IP领导品牌，推荐！
 
