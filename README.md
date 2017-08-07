@@ -2,7 +2,7 @@
 What is mimvp-proxy-demo ?
 ----------
 
-米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言，正确使用代理IP，由北京米扑科技有限公司([mimvp.com](http://mimvp.com))开发分享。
+米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](http://mimvp.com))原创分享。
 
 米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi等十多种编程语言或脚本，举证了大量的可运行实例，来讲解使用代理IP的正确方式，方便网页爬取、数据采集、自动化测试等领域。
 
@@ -18,9 +18,9 @@ What is mimvp-proxy-demo ?
 编程语言之代理协议
 ----------
 
-![sitemap.xml 示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/mimvp-proxy-demo-1-lang-proxy-protocol.png)
+![sitemap.xml 示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
 
-![sitemap.xml 示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/mimvp-proxy-demo-2-lang-proxy-demo.png)
+![sitemap.xml 示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
 
 
 
@@ -127,80 +127,80 @@ def test_socks5(socks5, mimvp_url):
 3. Java 设置代理
 
 ```java
-	// 设置系统代理，支持全部协议 http，https，socks4，socks5
-	private static int proxy_property(String proxyType, String proxyStr) {
-		int dataLen = 0;
+// 设置系统代理，支持全部协议 http，https，socks4，socks5
+private static int proxy_property(String proxyType, String proxyStr) {
+	int dataLen = 0;
 
-		String proxy_ip = proxyStr.split(":")[0];
-		String proxy_port = proxyStr.split(":")[1];
-		
-		Properties prop = System.getProperties();
-		
-		// http
-		if(proxyType.equals("http")){
-			prop.setProperty("http.proxySet", "true");
-			prop.setProperty("http.proxyHost", proxy_ip);
-			prop.setProperty("http.proxyPort", proxy_port);
-			prop.setProperty("http.nonProxyHosts", "localhost|192.168.0.*");
-		}
-		
-		// https
-		if (proxyType.equals("https")) {
-			prop.setProperty("https.proxyHost", proxy_ip);
-			prop.setProperty("https.proxyPort", proxy_port);
-		}
-        
-        // socks
-		if(proxyType.equals("socks4") || proxyType.equals("socks5")){
-	        prop.setProperty("socksProxySet", "true");
-	        prop.setProperty("socksProxyHost", proxy_ip);
-	        prop.setProperty("socksProxyPort", proxy_port);
-		}
-        
-        // ftp
-		if(proxyType.equals("ftp")){
-	        prop.setProperty("ftp.proxyHost", proxy_ip);
-	        prop.setProperty("ftp.proxyPort", proxy_port);
-	        prop.setProperty("ftp.nonProxyHosts", "localhost|192.168.0.*");
-		}
-        
-//        // auth 设置登录代理服务器的用户名和密码
-//        Authenticator.setDefault(new MyAuthenticator("user", "pwd"));
-        
-		try{
-			URL url = new URL(proxyUrl2);		// http://proxy.mimvp.com
-			URLConnection conn = url.openConnection();
-			conn.setConnectTimeout(30 * 1000);
-			
-			InputStream in = conn.getInputStream();
-			InputStreamReader reader = new InputStreamReader(in);
-			char[] ch = new char[1024];
-			int len = 0;
-			String data = "";
-			while((len = reader.read(ch)) > 0) {
-				String newData = new String(ch, 0, len);
-				data += newData;
-			}
-			System.out.println("data : " + data);
-			dataLen = data.length();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-        return dataLen;
+	String proxy_ip = proxyStr.split(":")[0];
+	String proxy_port = proxyStr.split(":")[1];
+	
+	Properties prop = System.getProperties();
+	
+	// http
+	if(proxyType.equals("http")){
+		prop.setProperty("http.proxySet", "true");
+		prop.setProperty("http.proxyHost", proxy_ip);
+		prop.setProperty("http.proxyPort", proxy_port);
+		prop.setProperty("http.nonProxyHosts", "localhost|192.168.0.*");
 	}
 	
-	static class MyAuthenticator extends Authenticator {
-        private String user = "";
-        private String password = "";
-        public MyAuthenticator(String user, String password) {
-            this.user = user;
-            this.password = password;
-        }
-        protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(user, password.toCharArray());
-        }
+	// https
+	if (proxyType.equals("https")) {
+		prop.setProperty("https.proxyHost", proxy_ip);
+		prop.setProperty("https.proxyPort", proxy_port);
+	}
+    
+    // socks
+	if(proxyType.equals("socks4") || proxyType.equals("socks5")){
+        prop.setProperty("socksProxySet", "true");
+        prop.setProperty("socksProxyHost", proxy_ip);
+        prop.setProperty("socksProxyPort", proxy_port);
+	}
+    
+    // ftp
+	if(proxyType.equals("ftp")){
+        prop.setProperty("ftp.proxyHost", proxy_ip);
+        prop.setProperty("ftp.proxyPort", proxy_port);
+        prop.setProperty("ftp.nonProxyHosts", "localhost|192.168.0.*");
+	}
+    
+//        // auth 设置登录代理服务器的用户名和密码
+//        Authenticator.setDefault(new MyAuthenticator("user", "pwd"));
+    
+	try{
+		URL url = new URL(proxyUrl2);		// http://proxy.mimvp.com
+		URLConnection conn = url.openConnection();
+		conn.setConnectTimeout(30 * 1000);
+		
+		InputStream in = conn.getInputStream();
+		InputStreamReader reader = new InputStreamReader(in);
+		char[] ch = new char[1024];
+		int len = 0;
+		String data = "";
+		while((len = reader.read(ch)) > 0) {
+			String newData = new String(ch, 0, len);
+			data += newData;
+		}
+		System.out.println("data : " + data);
+		dataLen = data.length();
+		
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+    return dataLen;
+}
+
+static class MyAuthenticator extends Authenticator {
+    private String user = "";
+    private String password = "";
+    public MyAuthenticator(String user, String password) {
+        this.user = user;
+        this.password = password;
     }
+    protected PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication(user, password.toCharArray());
+    }
+}
 ```
 
 	
