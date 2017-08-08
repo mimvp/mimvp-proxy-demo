@@ -9,7 +9,7 @@
 米扑代理示例，测试使用的代理IP，全部来自于米扑代理：[http://proxy.mimvp.com](http://proxy.mimvp.com)
         
        
-#### 米扑代理示例官网 : [http://proxy.mimvp.com/demo2.php](http://proxy.mimvp.com/demo2.php#demo-main-div)
+### 米扑代理示例官网 : [http://proxy.mimvp.com/demo2.php](http://proxy.mimvp.com/demo2.php#demo-main-div)
       
   
 <br/>     
@@ -17,7 +17,7 @@
 
       
 编程语言之代理协议
-========
+----------
 
 ![代理协议汇总](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
 
@@ -29,10 +29,9 @@
 
      
 编程语言之代理示例
-========
-
-1. PHP 设置代理
 ----------
+
+#### 1. PHP 设置代理
 
 ```php
 $proxy_http = "http://138.68.165.154:3128";
@@ -91,8 +90,7 @@ function proxy_curl($proxy_uri, $mimvp_url) {
 <br/>      
 	
 	
-2. Python 设置代理
-----------
+#### 2. Python 设置代理
 
 ```python
 # 全局取消ssl证书验证，防止打开未验证的https网址抛出异常
@@ -151,8 +149,7 @@ def test_socks5(socks5, mimvp_url):
 <br/>      
 	
 	
-3. Java 设置代理
-----------
+#### 3. Java 设置代理
 
 ```java
 // 设置系统代理，支持全部协议 http，https，socks4，socks5
@@ -235,8 +232,7 @@ static class MyAuthenticator extends Authenticator {
 <br/>      
 	
 	
-4. Shell 设置代理
-----------
+#### 4. Shell 设置代理
 
 ```sh
 #!/bin/bash
@@ -336,8 +332,7 @@ sudo reboot
 <br/>      
 	
 	
-5. 易语言 设置代理
-----------
+#### 5. 易语言 设置代理
 
 ```php
 ' 易语言 支持 http
@@ -399,8 +394,7 @@ sudo reboot
 
 ![易语言使用代理示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/eyuyan-demo-2.png)
 
-
-<br/>     
+  
 <br/>      
 <br/>      
 	
