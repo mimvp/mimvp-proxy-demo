@@ -6,10 +6,10 @@
 
 米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi、易语言等十多种编程语言或脚本，通过大量的可运行实例，详细讲解了使用代理IP的正确方法，方便网页爬取、数据采集、自动化测试等领域。
 
-米扑代理示例，测试使用的代理IP，全部来自于米扑代理：[http://proxy.mimvp.com](http://proxy.mimvp.com)
+米扑代理示例，测试使用的代理IP，全部来自于米扑代理：<a target="_blank" href="http://proxy.mimvp.com">http://proxy.mimvp.com</a>
         
        
-### 米扑代理示例官网 : [http://proxy.mimvp.com/demo2.php](http://proxy.mimvp.com/demo2.php#demo-main-div)
+#### 米扑代理示例官网 : <a target="_blank" href="http://proxy.mimvp.com/demo2.php#demo-main-div">http://proxy.mimvp.com/demo2.php</a>
       
   
 <br/>     
@@ -85,14 +85,21 @@ function proxy_curl($proxy_uri, $mimvp_url) {
 	$result = curl_exec ( $ch );
 }
 ```
-
-<br/>     
+  
 <br/>      
 	
 	
 #### 2. Python 设置代理
 
 ```python
+proxy_http = {"http":"http://138.68.165.154:3128"}
+proxy_https = {"https":"http://191.252.103.93:8080"}
+proxy_socks4 = {'socks4': '218.58.52.158:1088'} 
+proxy_socks5 = {'socks5': '68.234.190.150:45454'}
+
+mimvp_url = "http://proxy.mimvp.com/exist.php"
+mimvp_url2 = "https://proxy.mimvp.com/exist.php"
+
 # 全局取消ssl证书验证，防止打开未验证的https网址抛出异常
 # urllib2.URLError: [urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)]
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -143,15 +150,42 @@ def test_socks5(socks5, mimvp_url):
     content = urllib2.urlopen(mimvp_url, timeout=30).read()
     print content
     print len(content)	
+    
+    
+if __name__ == "__main__":
+    # http, https
+    test_http(proxy_http, mimvp_url)   
+    test_http(proxy_https, mimvp_url2)    
+    
+    # http
+    test_http2(proxy_http, mimvp_url)   
+      
+    # socks4
+    test_socks4(proxy_socks4['socks4'], mimvp_url)
+     
+    # socks5
+    test_socks5(proxy_socks5['socks5'], mimvp_url)
 ```
 	
-<br/>     
 <br/>      
 	
 	
 #### 3. Java 设置代理
 
 ```java
+@SuppressWarnings({ "serial" })
+public static HashMap proxyMap = new HashMap() {
+	{
+		put("http", "138.68.161.14:3128");
+		put("https", "104.236.120.183:8080");
+		put("socks4", "113.7.118.112:2346");
+		put("socks5", "61.135.155.82:1080");
+	}
+};
+
+final static String proxyUrl = "http://proxy.mimvp.com/exist.php";
+final static String proxyUrl2 = "https://proxy.mimvp.com/exist.php";
+	
 // 设置系统代理，支持全部协议 http，https，socks4，socks5
 private static int proxy_property(String proxyType, String proxyStr) {
 	int dataLen = 0;
@@ -227,8 +261,7 @@ static class MyAuthenticator extends Authenticator {
     }
 }
 ```
-
-<br/>     
+ 
 <br/>      
 	
 	
@@ -328,7 +361,6 @@ source ~/.bash_profile
 sudo reboot
 ```
 	
-<br/>     
 <br/>      
 	
 	
@@ -402,14 +434,48 @@ sudo reboot
 注意事项
 ----------
 
-1. 哪里可找到代理使用示例的引用包或依赖库？
+1. 哪儿可找到代理使用示例里的引用包或依赖库？
 解答：米扑代理示例的引用包或依赖库，已经放在了mimvp-proxy-demo开源项目里的目录下了，例如：Python2.7 使用socks4/5是引用了socks.py，已经放在了目录下：https://github.com/mimvp/mimvp-proxy-demo/tree/master/Python2/socks.py
 
 
 2. 如何安装配置编程语言的开发环境？
 解答：米扑代理使用示例，全部由米扑科技编写代码、测试验证，因此米扑科技搭建了全部的开发测试环境，详细配置编程语言的开发环境，请参考米扑博客：[http://blog.mimvp.com](http://blog.mimvp.com)
 
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/autohotkey-an-zhuang-yu-kai-fa/">AutoHotkey 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/08/python-scrapy-an-zhuang-yu-kai-fa/">Python scrapy 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/08/python-requests-an-zhuang-yu-kai-fa/">Python requests 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/08/python-pyspider-an-zhuang-yu-kai-fa/">Python pyspider 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/08/python3-urllib-yong-fa-xiang-jie/">Python3 urllib 用法详解</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/10/phantomjs-an-zhuang-yu-kai-fa/">PhantomJS 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/10/phantomjs-selenium-she-zhi-dong-tai-dai-li/">PhantomJS Selenium 设置动态代理</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/10/node-js-an-zhuang-yu-kai-fa/">Node.js 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/10/nodejs-superagent-an-zhuang-yu-kai-fa/">Node.js SuperAgent 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/10/node-js-she-zhi-dai-li-de-liang-zhong-fang-shi-superagent-proxy-he-https-proxy-agent/">Node.js 设置代理的两种方式：superagent-proxy 和 https-proxy-agent</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/ruby-an-zhuang-yu-kai-fa/">Ruby 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/perl-an-zhuang-yu-kai-fa/">Perl 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/delphi-an-zhuang-yu-kai-fa/">Delphi 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/groovy-an-zhuang-yu-kai-fa/">Groovy 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/scala-an-zhuang-yu-kai-fa/">Scala 安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/r-yu-yan-de-an-zhuang-yu-kai-fa/">R语言的安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/go-yu-yan-xia-zai-an-zhuang-pei-zhi-shi-yong/">Go语言下载、安装、配置、使用</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/09/go-yu-yan-zhi-chi-http-httpssocks4socks4asocks5-yi-ji-qian-tao-dai-li/">Go语言支持 http、 https、socks4、socks4a、socks5，以及嵌套代理</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/10/httpie-gong-ju-shi-yong-ru-men/">HTTPie 工具使用入门</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/08/yi-yu-yan-de-an-zhuang-yu-kai-fa/">易语言的安装与开发</a>
+* <a target="_blank" href="http://blog.mimvp.com/2017/08/yi-yu-yan-de-wang-luo-bian-cheng-he-dai-li-shi-li/">易语言的网络编程和代理示例</a>
+
 
 3. 代理使用示例里的代理从哪找？
-解答：米扑代理使用示例（mimvp-proxy-demo）中的测试代理，全部来自米扑代理[http://proxy.mimvp.com](http://proxy.mimvp.com)，其支持http、https、socks4、socks5等全部协议的代理IP，而且米扑代理覆盖全球120多个国家，中国34个省市，代理非常丰富，为全球代理IP领导品牌，推荐！
+解答：米扑代理使用示例（mimvp-proxy-demo）中的测试代理IP，全部来自米扑代理[http://proxy.mimvp.com](http://proxy.mimvp.com)，其支持http、https、socks4、socks5等全部协议的代理IP，而且米扑代理覆盖全球120多个国家，中国34个省市，代理非常丰富，为全球代理IP领导品牌，推荐！
+
+  
+<br/>      
+<br/>      
+	
+
+米扑科技
+----------
+
+![编程语言示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-logo.png)
+
+[http://mimvp.com](http://mimvp.com)
 
