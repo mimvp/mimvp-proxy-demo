@@ -1,29 +1,31 @@
 
-What is mimvp-proxy-demo ?
+米扑代理示例（mimvp-proxy-demo）
 ----------
 
 米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](http://mimvp.com))原创分享。
 
-米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi等十多种编程语言或脚本，举证了大量的可运行实例，来讲解使用代理IP的正确方式，方便网页爬取、数据采集、自动化测试等领域。
+米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi、易语言等十多种编程语言或脚本，通过大量的可运行实例，详细讲解了使用代理IP的正确方法，方便网页爬取、数据采集、自动化测试等领域。
 
 米扑代理示例，测试使用的代理IP，全部来自于米扑代理：[http://proxy.mimvp.com](http://proxy.mimvp.com)
-
-
+        
+       
+       
 ## 示例：
 
 #### 米扑代理示例官网 : [http://proxy.mimvp.com/demo2.php](http://proxy.mimvp.com/demo2.php#demo-main-div)
-
-
-
+      
+      
+      
 编程语言之代理协议
 ----------
 
 ![代理协议汇总](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
 
 ![编程语言示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
-
-
-
+     
+     
+     
+     
 编程语言之代理示例
 ----------
 
