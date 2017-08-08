@@ -434,11 +434,15 @@ sudo reboot
 注意事项
 ----------
 
-1. 哪儿可找到代理使用示例里的引用包或依赖库？
+#### 1. 哪儿可找到代理使用示例里的引用包或依赖库？
+
 解答：米扑代理示例的引用包或依赖库，已经放在了mimvp-proxy-demo开源项目里的目录下了，例如：Python2.7 使用socks4/5是引用了socks.py，已经放在了目录下：https://github.com/mimvp/mimvp-proxy-demo/tree/master/Python2/socks.py
 
+  
+<br/>     
 
-2. 如何安装配置编程语言的开发环境？
+#### 2. 如何安装配置编程语言的开发环境？
+
 解答：米扑代理使用示例，全部由米扑科技编写代码、测试验证，因此米扑科技搭建了全部的开发测试环境，详细配置编程语言的开发环境，请参考米扑博客：[http://blog.mimvp.com](http://blog.mimvp.com)
 
 * <a target="_blank" href="http://blog.mimvp.com/2017/09/autohotkey-an-zhuang-yu-kai-fa/">AutoHotkey 安装与开发</a>
@@ -463,8 +467,11 @@ sudo reboot
 * <a target="_blank" href="http://blog.mimvp.com/2017/08/yi-yu-yan-de-an-zhuang-yu-kai-fa/">易语言的安装与开发</a>
 * <a target="_blank" href="http://blog.mimvp.com/2017/08/yi-yu-yan-de-wang-luo-bian-cheng-he-dai-li-shi-li/">易语言的网络编程和代理示例</a>
 
+  
+<br/>     
 
-3. 代理使用示例里的代理从哪找？
+#### 3. 代理使用示例里的代理从哪找？
+
 解答：米扑代理使用示例（mimvp-proxy-demo）中的测试代理IP，全部来自米扑代理[http://proxy.mimvp.com](http://proxy.mimvp.com)，其支持http、https、socks4、socks5等全部协议的代理IP，而且米扑代理覆盖全球120多个国家，中国34个省市，代理非常丰富，为全球代理IP领导品牌，推荐！
 
   
