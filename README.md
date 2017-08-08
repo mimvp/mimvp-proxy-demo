@@ -1,35 +1,56 @@
 
-What is mimvp-proxy-demo ?
+米扑代理示例（mimvp-proxy-demo）
 ----------
 
 米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](http://mimvp.com))原创分享。
 
-米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi等十多种编程语言或脚本，举证了大量的可运行实例，来讲解使用代理IP的正确方式，方便网页爬取、数据采集、自动化测试等领域。
+米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi、易语言等十多种编程语言或脚本，通过大量的可运行实例，详细讲解了使用代理IP的正确方法，方便网页爬取、数据采集、自动化测试等领域。
 
 米扑代理示例，测试使用的代理IP，全部来自于米扑代理：[http://proxy.mimvp.com](http://proxy.mimvp.com)
-
-
+        
+       
+       
 ## 示例：
 
 #### 米扑代理示例官网 : [http://proxy.mimvp.com/demo2.php](http://proxy.mimvp.com/demo2.php#demo-main-div)
-
-
-
+      
+<br/>     
+<br/>     
+<br/>     
+      
+      
 编程语言之代理协议
 ----------
 
 ![代理协议汇总](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
 
 ![编程语言示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
-
-
-
+     
+<br/>     
+<br/>     
+<br/>     
+     
+     
 编程语言之代理示例
 ----------
 
 1. PHP 设置代理
 
 ```php
+$proxy_http = "http://138.68.165.154:3128";
+$proxy_https = "https://202.53.169.199:3128";
+$proxy_socks4 = "socks4://94.158.70.129:1080";
+$proxy_socks5 = "socks5://173.230.95.147:45454";
+
+$mimvp_url = "http://proxy.mimvp.com/exist.php";
+$mimvp_url2 = "https://proxy.mimvp.com/exist.php";
+
+// curl
+proxy_curl($proxy_http, $mimvp_url);		// http
+proxy_curl($proxy_https, $mimvp_url);		// https
+proxy_curl($proxy_socks4, $mimvp_url);		// socks4
+proxy_curl($proxy_socks5, $mimvp_url);		// socks5
+
 // php curl 支持 http、https、socks4、socks5
 function proxy_curl($proxy_uri, $mimvp_url) {
 	$key = explode('://', $proxy_uri)[0];		// http
@@ -68,6 +89,9 @@ function proxy_curl($proxy_uri, $mimvp_url) {
 }
 ```
 
+<br/>     
+<br/>      
+	
 	
 2. Python 设置代理
 
@@ -123,6 +147,10 @@ def test_socks5(socks5, mimvp_url):
     print content
     print len(content)	
 ```
+	
+<br/>     
+<br/>      
+	
 	
 3. Java 设置代理
 
@@ -203,6 +231,9 @@ static class MyAuthenticator extends Authenticator {
 }
 ```
 
+<br/>     
+<br/>      
+	
 	
 4. Shell 设置代理
 
@@ -300,6 +331,9 @@ source ~/.bash_profile
 sudo reboot
 ```
 	
+<br/>     
+<br/>      
+	
 	
 5. 易语言 设置代理
 
@@ -364,6 +398,10 @@ sudo reboot
 ![易语言使用代理示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/eyuyan-demo-2.png)
 
 
+<br/>     
+<br/>      
+<br/>      
+	
 
 注意事项
 ----------
