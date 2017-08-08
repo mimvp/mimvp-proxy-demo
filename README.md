@@ -475,7 +475,7 @@ sudo reboot
 米扑科技
 ----------
 
-![编程语言示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-logo.png)
+![mimvp-logo.png](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-logo.png)
 
-[http://mimvp.com](http://mimvp.com)
+<a href="http://mimvp.com" target="_blank">http://mimvp.com</a>
 
