@@ -19,9 +19,9 @@
 编程语言之代理协议
 ----------
 
-![代理协议汇总](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
+![代理协议汇总](./cssjs/mimvp-proxy-demo-1-lang-proxy-protocol.png)
 
-![编程语言示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
+![编程语言示例](./cssjs/mimvp-proxy-demo-2-lang-proxy-demo.png)
      
   
 <br/>     
@@ -422,9 +422,9 @@ sudo reboot
 输出调试文本 (网页_访问S (目标网址, , , , , , , , , , 代理地址, 代理用户名, 代理密码))
 ```
 
-![易语言使用代理示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/eyuyan-demo-1.png)
+![易语言使用代理示例](./cssjs/eyuyan-demo-1.png)
 
-![易语言使用代理示例](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/eyuyan-demo-2.png)
+![易语言使用代理示例](./cssjs/eyuyan-demo-2.png)
 
   
 <br/>      
@@ -482,7 +482,7 @@ sudo reboot
 米扑科技
 ----------
 
-![mimvp-logo.png](https://github.com/mimvp/mimvp-proxy-demo/blob/master/cssjs/mimvp-logo.png)
+![mimvp-logo.png](./cssjs/mimvp-logo.png)
 
 <a href="http://mimvp.com" target="_blank">http://mimvp.com</a>
 
