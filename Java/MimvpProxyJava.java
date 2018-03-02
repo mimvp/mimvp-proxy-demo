@@ -2,10 +2,10 @@
  * Java 支持 http、https、socks4、socks5
  * 
  * 米扑代理示例：
- * http://proxy.mimvp.com/demo2.php
+ * https://proxy.mimvp.com/demo2.php
  * 
  * 米扑代理购买：
- * http://proxy.mimvp.com
+ * https://proxy.mimvp.com
  * 
  * mimvp.com
  * 2015-11-09
@@ -45,15 +45,27 @@ public class MimvpProxyJava {
 	public static HashMap<String, String> proxyMap = new HashMap<String, String>() {
 		{
 			put("http", "138.68.161.14:3128");
-			put("https", "104.236.120.183:8080");
-			put("socks4", "113.7.118.112:2346");
-			put("socks5", "61.135.155.82:1080");
+			put("https", "61.216.1.23:3128");
+			put("socks4", "115.238.247.205:1080");
+			put("socks5", "122.146.58.135:16405");
+		}
+	};
+
+	
+	public static String PROXY_USERNAME = "username";
+	public static String PROXY_PASSWORD = "password";
+	@SuppressWarnings({ "serial" })
+	public static HashMap<String, String> proxyAuthMap = new HashMap<String, String>() {
+		{
+			put("http", "120.24.177.37:6474");
+			put("https", "120.24.177.37:6474");
+			put("socks5", "120.24.177.37:6476");
 		}
 	};
 	
-	final static String proxyUrl = "http://proxy.mimvp.com/exist.php";
-	final static String proxyUrl2 = "https://proxy.mimvp.com/exist.php";
-	final static String proxyUrl3 = "https://apps.bdimg.com/libs/jquery-i18n/1.1.1/jquery.i18n.min.js";
+	
+	final static String proxyUrl = "http://proxy.mimvp.com/test_proxy2.php";		// http
+	final static String proxyUrl2 = "https://proxy.mimvp.com/test_proxy2.php";	// https
 	
 
 	// 全局禁止ssl证书验证，防止访问非验证的https网址无法访问，例如：https://mimvp.com
@@ -62,10 +74,9 @@ public class MimvpProxyJava {
 	}
 
 	private static void disableSslVerification() {
-	    try
-	    {
+	    try {
 	        // Create a trust manager that does not validate certificate chains
-	        TrustManager[] trustAllCerts = new TrustManager[] {new X509TrustManager() {
+	        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
 	            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
 	                return null;
 	            }
@@ -73,8 +84,7 @@ public class MimvpProxyJava {
 	            }
 	            public void checkServerTrusted(X509Certificate[] certs, String authType) {
 	            }
-	        }
-	        };
+	        }};
 
 	        // Install the all-trusting trust manager
 	        SSLContext sc = SSLContext.getInstance("SSL");
@@ -98,47 +108,111 @@ public class MimvpProxyJava {
 	}
 	
 	
+	// 主入口函数
 	public static void main(String args[]){
+		spider_proxy();		// 通过API实时获取米扑代理
+		proxy_no_auth();		// 代理无用户名密码授权
+		proxy_auth();		// 代理需要用户名密码授权
+	}
+	
+	
+	// 通过API实时获取米扑代理
+	public static void spider_proxy() {
+		String proxy_url = "https://proxyapi.mimvp.com/api/fetchsecret.php?orderid=868435221231212345&http_type=3";
+		
+		URL url = null;
+		try {
+			url = new URL(proxy_url);
+			
+			URLConnection conn = url.openConnection();
+			conn.setDoOutput(true);
+			conn.setReadTimeout(30 * 1000);		// 设置超时30秒
+			conn.setConnectTimeout(30 * 1000);	// 连接超时30秒
+			
+			InputStream in = conn.getInputStream();
+			InputStreamReader reader = new InputStreamReader(in);
+			char[] ch = new char[1024];
+			int len = 0;
+			String data = "";
+			while((len = reader.read(ch)) > 0) {
+				String newData = new String(ch, 0, len);
+				data += newData;
+			}
+			
+			String[] proxy_list;
+			proxy_list = data.split("\n");
+			for (String proxy : proxy_list) {
+				System.out.println(proxy);
+			}
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	// 使用代理，无用户名密码授权
+	public static void proxy_no_auth() {
 		int dataLen = 0;
 
 		// proxy protocol 只支持 http、socks5
-		System.out.println("+++++++++ proxy protocol +++++++++");			
-		Iterator<String> it = MimvpProxyJava.proxyMap.keySet().iterator();
-		while(it.hasNext()){
-			String proxyType = it.next();
-			String proxyStr = MimvpProxyJava.proxyMap.get(proxyType);
-			dataLen = proxy_protocol(proxyType, proxyStr);
-			System.out.println(proxyType + " : " + proxyStr + " --> " + dataLen);
-		}
+		dataLen = proxy_protocol("http", MimvpProxyJava.proxyMap.get("http"));		// http
+		System.out.println("http : " + MimvpProxyJava.proxyMap.get("http") + " --> " + dataLen);
+		
+		dataLen = proxy_protocol("socks5", MimvpProxyJava.proxyMap.get("socks5"));	// socks5
+		System.out.println("socks5 : " + MimvpProxyJava.proxyMap.get("socks5") + " --> " + dataLen);
 
+		
 		// proxy property 支持http、https、socks4、socks5
-		System.out.println("\n+++++++++ proxy property +++++++++");
 		Iterator<String> it2 = MimvpProxyJava.proxyMap.keySet().iterator();
 		while(it2.hasNext()){
 			String proxyType = it2.next();
-			String proxyStr = MimvpProxyJava.proxyMap.get(proxyType);
-			dataLen = proxy_property(proxyType, proxyStr);
-			System.out.println(proxyType + " : " + proxyStr + " --> " + dataLen);
+			String proxyIpPort = MimvpProxyJava.proxyMap.get(proxyType);
+			dataLen = proxy_property(proxyType, proxyIpPort);
+			System.out.println(proxyType + " : " + proxyIpPort + " --> " + dataLen);
 		}
 
+		
 		// proxy socks
-		System.out.println("\n++++++++ proxy socks +++++++++++");
 		Iterator<String> it3 = MimvpProxyJava.proxyMap.keySet().iterator();
 		while(it3.hasNext()){
 			String proxyType = it3.next();
-			String proxyStr = MimvpProxyJava.proxyMap.get(proxyType);
-			dataLen = proxy_socks(proxyType, proxyStr);
-			System.out.println(proxyType + " : " + proxyStr + " --> " + dataLen);
+			String proxyIpPort = MimvpProxyJava.proxyMap.get(proxyType);
+			dataLen = proxy_socks(proxyType, proxyIpPort);
+			System.out.println(proxyType + " : " + proxyIpPort + " --> " + dataLen);
+		}
+	}
+	
+	
+	// 使用代理，需要用户名密码授权，请先取消授权的注释（代码里有注释说明）
+	public static void proxy_auth() {
+		int dataLen = 0;
+
+		// proxy protocol 只支持 http、socks5
+		dataLen = proxy_protocol("http", MimvpProxyJava.proxyAuthMap.get("http"));		// http
+		System.out.println("http : " + MimvpProxyJava.proxyAuthMap.get("http") + " --> " + dataLen);
+		
+		dataLen = proxy_protocol("socks5", MimvpProxyJava.proxyAuthMap.get("socks5"));	// socks5
+		System.out.println("socks5 : " + MimvpProxyJava.proxyAuthMap.get("socks5") + " --> " + dataLen);
+
+		
+		// proxy property 支持http、https、socks4、socks5
+		Iterator<String> it2 = MimvpProxyJava.proxyAuthMap.keySet().iterator();
+		while(it2.hasNext()){
+			String proxyType = it2.next();
+			String proxyIpPort = MimvpProxyJava.proxyAuthMap.get(proxyType);
+			dataLen = proxy_property(proxyType, proxyIpPort);
+			System.out.println(proxyType + " : " + proxyIpPort + " --> " + dataLen);
 		}
 	}
 	
 	
 	// 设置系统代理，支持全部协议 http，https，socks4，socks5
-	private static int proxy_property(String proxyType, String proxyStr) {
+	private static int proxy_property(String proxyType, String proxyIpPort) {
 		int dataLen = 0;
 
-		String proxy_ip = proxyStr.split(":")[0];
-		String proxy_port = proxyStr.split(":")[1];
+		String proxy_ip = proxyIpPort.split(":")[0];
+		String proxy_port = proxyIpPort.split(":")[1];
 		
 		Properties prop = System.getProperties();
 		
@@ -170,11 +244,14 @@ public class MimvpProxyJava {
 	        prop.setProperty("ftp.nonProxyHosts", "localhost|192.168.0.*");
 		}
         
-//        // auth 设置登录代理服务器的用户名和密码
-//        Authenticator.setDefault(new MyAuthenticator("user", "pwd"));
+//        // auth 代理需要用户名和密码授权时开启，取消此注释，米扑代理验证通过
+//        Authenticator.setDefault(new MyAuthenticator(MimvpProxyJava.PROXY_USERNAME, MimvpProxyJava.PROXY_PASSWORD));
         
 		try{
-			URL url = new URL(proxyUrl2);		// http://proxy.mimvp.com
+			URL url = new URL(proxyUrl);			// 默认访问http网页
+			if(proxyType.equals("https")) {		// 若为https协议，则访问https网页
+				url = new URL(proxyUrl2);
+			}
 			URLConnection conn = url.openConnection();
 			conn.setConnectTimeout(30 * 1000);
 			
@@ -187,37 +264,44 @@ public class MimvpProxyJava {
 				String newData = new String(ch, 0, len);
 				data += newData;
 			}
+			in.close();
+			
 			System.out.println("data : " + data);
 			dataLen = data.length();
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		prop.clear();	// 清空属性参数，防止下次设置代理时残留脏数据
+		prop = null;
+		
         return dataLen;
 	}
 	
 	static class MyAuthenticator extends Authenticator {
-        private String user = "";
+        private String username = "";
         private String password = "";
-        public MyAuthenticator(String user, String password) {
-            this.user = user;
+        public MyAuthenticator(String username, String password) {
+            this.username = username;
             this.password = password;
         }
         protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(user, password.toCharArray());
+            return new PasswordAuthentication(this.username, this.password.toCharArray());
         }
     }
 	
 	
 	// 使用函数协议，仅支持 HTTP 和 SOCKS5
-	private static int proxy_protocol(String proxyType, String proxyStr){
+	private static int proxy_protocol(String proxyType, String proxyIpPort) {
 		int dataLen = 0;
 
-		String proxy_ip = proxyStr.split(":")[0];
-		int proxy_port = Integer.parseInt(proxyStr.split(":")[1]);
+		String proxy_ip = proxyIpPort.split(":")[0];
+		int proxy_port = Integer.parseInt(proxyIpPort.split(":")[1]);
 		
 		try{
 			URL url = new URL(proxyUrl);		// http://proxy.mimvp.com
+			
+//			// auth 代理需要用户名密码授权时开启，取消此注释，米扑代理验证通过
+//			Authenticator.setDefault(new MyAuthenticator(MimvpProxyJava.PROXY_USERNAME, MimvpProxyJava.PROXY_PASSWORD));	
 			
 			InetSocketAddress addr = new InetSocketAddress(proxy_ip, proxy_port);
 			Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
@@ -226,7 +310,7 @@ public class MimvpProxyJava {
 			}
 			
 			URLConnection conn = url.openConnection(proxy);
-			conn.setConnectTimeout(30 * 1000);
+			conn.setConnectTimeout(30 * 1000);	// 连接超时30秒
 			
 			InputStream in = conn.getInputStream();
 			InputStreamReader reader = new InputStreamReader(in);
@@ -237,9 +321,10 @@ public class MimvpProxyJava {
 				String newData = new String(ch, 0, len);
 				data += newData;
 			}
+			in.close();
+			
 			System.out.println("data : " + data);
 			dataLen = data.length();
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -248,12 +333,12 @@ public class MimvpProxyJava {
 	
 	
 	// proxy socket，测试用
-	private static int proxy_socks(String proxyType, String proxyStr){
+	private static int proxy_socks(String proxyType, String proxyIpPort) {
 		int dataLen = 0;
 		Socket socket = null;
 		
-		String proxy_ip = proxyStr.split(":")[0];
-		int proxy_port = Integer.parseInt(proxyStr.split(":")[1]);
+		String proxy_ip = proxyIpPort.split(":")[0];
+		int proxy_port = Integer.parseInt(proxyIpPort.split(":")[1]);
 		
 		try {
 			socket = new Socket(proxy_ip, proxy_port);
