@@ -229,6 +229,12 @@ public class MimvpProxyJava {
 			prop.setProperty("https.proxyHost", proxy_ip);
 			prop.setProperty("https.proxyPort", proxy_port);
 		}
+		
+		// 支持同时代理 http和https 请求
+		if (proxyType.equals("http") || proxyType.equals("https")) {
+			prop.setProperty("proxyHost", proxy_ip);
+			prop.setProperty("proxyPort", proxy_port);
+		}
         
         // socks
 		if(proxyType.equals("socks4") || proxyType.equals("socks5")){
