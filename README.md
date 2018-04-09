@@ -2,14 +2,14 @@
 米扑代理示例（mimvp-proxy-demo）
 ========
 
-米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](http://mimvp.com))原创分享。
+米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](https://mimvp.com))原创分享。
 
 米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi、易语言等十多种编程语言或脚本，通过大量的可运行实例，详细讲解了使用代理IP的正确方法，方便网页爬取、数据采集、自动化测试等领域。
 
-米扑代理示例，测试使用的代理IP，全部来自于米扑代理：<a target="_blank" href="http://proxy.mimvp.com">http://proxy.mimvp.com</a>
+米扑代理示例，测试使用的代理IP，全部来自于米扑代理：<a target="_blank" href="https://proxy.mimvp.com">https://proxy.mimvp.com</a>
         
        
-#### 米扑代理示例官网 : <a target="_blank" href="http://proxy.mimvp.com/demo2.php#demo-main-div">http://proxy.mimvp.com/demo2.php</a>
+#### 米扑代理示例官网 : <a target="_blank" href="https://proxy.mimvp.com/demo2.php#demo-main-div">https://proxy.mimvp.com/demo2.php</a>
       
   
 <br/>     
@@ -484,5 +484,5 @@ sudo reboot
 
 ![mimvp-logo.png](./cssjs/mimvp-logo.png)
 
-<a href="http://mimvp.com" target="_blank">http://mimvp.com</a>
+<a href="https://mimvp.com" target="_blank">https://mimvp.com</a>
 
