@@ -31,13 +31,24 @@ from scrapy import signals
 class ProxyMiddleware(object):
     def process_request(self,request,spider):
     
+        print("middlewares - ProxyMiddleware()")
+        
+        # proxy no auth（代理无用户名密码验证，或白名单ip授权）
+        # 白名单ip授权，请见米扑代理会员中心：https://proxy.mimvp.com/usercenter/userinfo.php?p=whiteip
         if request.url.startswith("http://"):
-            request.meta['proxy']="http://180.96.27.12:88"          # http代理
+            request.meta['proxy']="http://140.143.62.84:37746"      # http代理
         elif request.url.startswith("https://"):
-            request.meta['proxy']="http://109.108.87.136:53281"         # https代理
+            request.meta['proxy']="http://140.143.62.84:37746"      # https代理
                 
-#         # proxy authentication
-#         proxy_user_pass = "USERNAME:PASSWORD"
+#         # proxy auth（代理有用户名密码验证）
+#         # 用户名密码授权，请见米扑代理会员中心：https://proxy.mimvp.com/usercenter/userinfo.php?p=whiteip
+#         if request.url.startswith("http://"):
+#             request.meta['proxy']="http://username:password@140.143.62.84:37746"          # http代理
+#         elif request.url.startswith("https://"):
+#             request.meta['proxy']="http://username:password@140.143.62.84:37746"         # https代理
+               
+#         # proxy authentication （经验证，失败，不推荐）
+#         proxy_user_pass = "mimvp-guest:welcome2mimvp"
 #         encoded_user_pass = base64.encodestring(proxy_user_pass)
 #         request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
 

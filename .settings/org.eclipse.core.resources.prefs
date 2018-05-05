@@ -2,3 +2,7 @@ eclipse.preferences.version=1
 encoding//Python2/mimvp-proxy-python2.py=utf-8
 encoding//Python3/mimvp-proxy-python3.py=utf-8
 encoding//PythonRequests/mimvp-proxy-python-requests.py=utf-8
+encoding//PythonScrapy/mimvp_proxy_python_scrapy/mimvp_proxy_python_scrapy/middlewares.py=utf-8
+encoding//PythonScrapy/mimvp_proxy_python_scrapy/mimvp_proxy_python_scrapy/middlewares2.py=utf-8
+encoding//PythonScrapy/mimvp_proxy_python_scrapy/mimvp_proxy_python_scrapy/settings.py=utf-8
+encoding//PythonScrapy/mimvp_proxy_python_scrapy/mimvp_proxy_python_scrapy/spiders/mimvp_spider.py=utf-8

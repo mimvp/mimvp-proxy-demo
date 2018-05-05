@@ -54,7 +54,7 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,  
-    'mimvp_proxy_python_scrapy.middlewares.ProxyMiddleware': 100,  
+    'mimvp_proxy_python_scrapy.middlewares.ProxyMiddleware': 100,       ## 注释掉此片段，开启 mimvp_spider - start_requests()
 #     'mimvp_proxy_python_scrapy.middlewares.MimvpProxyPythonScrapySpiderMiddleware': 543,
 #     'mimvp_proxy_python_scrapy.middlewares.MyCustomDownloaderMiddleware': 543,
 }
