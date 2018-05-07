@@ -2,14 +2,14 @@
 米扑代理示例（mimvp-proxy-demo）
 ========
 
-米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](http://mimvp.com))原创分享。
+米扑代理示例（mimvp-proxy-demo）聚合了多种编程语言使用代理IP，由北京米扑科技有限公司([mimvp.com](https://mimvp.com))原创分享。
 
 米扑代理示例，包含Python、Java、PHP、C#、Go、Perl、Ruby、Shell、NodeJS、PhantomJS、Groovy、Delphi、易语言等十多种编程语言或脚本，通过大量的可运行实例，详细讲解了使用代理IP的正确方法，方便网页爬取、数据采集、自动化测试等领域。
 
-米扑代理示例，测试使用的代理IP，全部来自于米扑代理：<a target="_blank" href="http://proxy.mimvp.com">http://proxy.mimvp.com</a>
+米扑代理示例，测试使用的代理IP，全部来自于米扑代理：<a target="_blank" href="https://proxy.mimvp.com">https://proxy.mimvp.com</a>
         
        
-#### 米扑代理示例官网 : <a target="_blank" href="http://proxy.mimvp.com/demo2.php#demo-main-div">http://proxy.mimvp.com/demo2.php</a>
+#### 米扑代理示例官网 : <a target="_blank" href="https://proxy.mimvp.com/demo2.php#demo-main-div">https://proxy.mimvp.com/demo2.php</a>
       
   
 <br/>     
@@ -274,10 +274,10 @@ static class MyAuthenticator extends Authenticator {
 # wget 支持 http、https
 #
 # 米扑代理示例：
-# http://proxy.mimvp.com/demo2.php
+# https://proxy.mimvp.com/demo2.php
 #
 # 米扑代理购买：
-# http://proxy.mimvp.com
+# https://proxy.mimvp.com
 #
 # mimvp.com
 # 2015-11-09
@@ -370,10 +370,10 @@ sudo reboot
 ' 易语言 支持 http
 ' 
 ' 米扑代理示例：
-' http://proxy.mimvp.com/demo2.php
+' https://proxy.mimvp.com/demo2.php
 ' 
 ' 米扑代理购买：
-' http://proxy.mimvp.com
+' https://proxy.mimvp.com
 ' 
 ' mimvp.com
 ' 2017-07-28
@@ -472,7 +472,7 @@ sudo reboot
 
 #### 3. 代理使用示例里的代理从哪找？
 
-解答：米扑代理使用示例（mimvp-proxy-demo）中的测试代理IP，全部来自米扑代理[http://proxy.mimvp.com](http://proxy.mimvp.com)，其支持http、https、socks4、socks5等全部协议的代理IP，而且米扑代理覆盖全球120多个国家，中国34个省市，代理非常丰富，为全球代理IP领导品牌，推荐！
+解答：米扑代理使用示例（mimvp-proxy-demo）中的测试代理IP，全部来自米扑代理[https://proxy.mimvp.com](https://proxy.mimvp.com)，其支持http、https、socks4、socks5等全部协议的代理IP，而且米扑代理覆盖全球120多个国家，中国34个省市，代理非常丰富，为全球代理IP领导品牌，推荐！
 
   
 <br/>      
@@ -484,5 +484,5 @@ sudo reboot
 
 ![mimvp-logo.png](./cssjs/mimvp-logo.png)
 
-<a href="http://mimvp.com" target="_blank">http://mimvp.com</a>
+<a href="https://mimvp.com" target="_blank">https://mimvp.com</a>
 
