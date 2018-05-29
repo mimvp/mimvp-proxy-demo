@@ -2,10 +2,10 @@
 C# 支持 http、https
 
 米扑代理示例：
-http://proxy.mimvp.com/demo2.php
+https://proxy.mimvp.com/demo2.php
 
 米扑代理购买：
-http://proxy.mimvp.com
+https://proxy.mimvp.com
 
 mimvp.com
 2015-11-09
@@ -23,8 +23,8 @@ namespace ConsoleApplication1
     	// 代码级代理
         public static void Main(string[] args)
         {
-            System.Net.WebProxy proxy = new WebProxy("218.21.230.156", 443);        // "107.150.96.188", 8080
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://proxy.mimvp.com/exist.php");
+            System.Net.WebProxy proxy = new WebProxy("218.21.230.156", 4435);        // "107.150.96.188", 8080
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://proxy.mimvp.com/ip.php");
             request.Proxy = proxy;
             using (WebResponse response = request.GetResponse())
             {
@@ -37,15 +37,16 @@ namespace ConsoleApplication1
             }
         }
  
+
  		// 系统变量级代理
         public static void Main2()
         {
             // your code goes here
             System.Net.WebProxy proxy = new WebProxy("107.150.96.188", 8080);
-            System.Net.HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://proxy.mimvp.com/exist.php");
-            req.Proxy = proxy;
-            req.Timeout = 30 * 1000;
-            System.Net.HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            System.Net.HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://proxy.mimvp.com/ip.php");
+            request.Proxy = proxy;
+            request.Timeout = 30 * 1000;
+            System.Net.HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
             Encoding bin = Encoding.GetEncoding("UTF-8");
             StreamReader reader = new StreamReader(resp.GetResponseStream(), bin);
             string str = reader.ReadToEnd();
@@ -53,6 +54,38 @@ namespace ConsoleApplication1
          
             reader.Close();
             reader.Dispose();
+        }
+
+
+        // 系统变量级代理密码授权 （感谢网友贡献代码：1725242984@qq.com）
+        public static void Main3()
+        {
+            // 要访问的目标页面
+            string targetUrl = "https://proxy.mimvp.com/ip.php";
+
+            // 代理ip和隧道验证密码
+            // 获取用户名密码请见米扑代理 - 会员中心：https://proxy.mimvp.com/usercenter/userinfo.php?p=whiteip
+            string proxyHost = "107.150.96.188";
+            string proxyPort = "8080";
+            string proxyUser = "mimvp-user";
+            string proxyPass = "mimvp-pass";
+
+            // 设置代理服务器
+            WebProxy proxy = new WebProxy(string.Format("{0}:{1}", proxyHost, proxyPort), true);
+            ServicePointManager.Expect100Continue = false;
+
+            var request = WebRequest.Create(targetUrl) as HttpWebRequest;
+            request.AllowAutoRedirect = true;
+            request.KeepAlive = true;
+            request.Method    = "GET";
+            request.Proxy     = proxy;
+            request.Proxy.Credentials = new System.Net.NetworkCredential(proxyUser, proxyPass);
+
+            using (var response = request.GetResponse() as HttpWebResponse)
+            using (var sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                string htmlStr = sr.ReadToEnd();
+            }
         }
     }
 }

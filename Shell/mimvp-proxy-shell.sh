@@ -64,10 +64,10 @@ wget -T 30 --tries 3 --proxy-user=username --proxy-password=password -e "https_p
 
 
 # curl 支持socks
-curl -m 30 --retry 3 -U username:password --socks5 21.59.126.22:57216 http://proxy.mimvp.com/test_proxy2.php				# http
-curl -m 30 --retry 3 -U username:password --socks5 21.59.126.22:57216 https://proxy.mimvp.com/test_proxy2.php				# https
-curl -m 30 --retry 3 --proxy-user username:password --socks5 21.59.126.22:57216 http://proxy.mimvp.com/test_proxy2.php		# http
-curl -m 30 --retry 3 --proxy-user username:password --socks5 21.59.126.22:57216 https://proxy.mimvp.com/test_proxy2.php		# https
+curl -m 30 --retry 3 -U username:password --socks5 21.59.126.22:57216 http://proxy.mimvp.com/test_proxy2.php				# socks5
+curl -m 30 --retry 3 -U username:password --socks5 21.59.126.22:57216 https://proxy.mimvp.com/test_proxy2.php				# socks5
+curl -m 30 --retry 3 --proxy-user username:password --socks5 21.59.126.22:57216 http://proxy.mimvp.com/test_proxy2.php		# socks5
+curl -m 30 --retry 3 --proxy-user username:password --socks5 21.59.126.22:57216 https://proxy.mimvp.com/test_proxy2.php		# socks5
 
 # wget 不支持socks
 
