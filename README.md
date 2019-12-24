@@ -443,7 +443,7 @@ sudo reboot
 
 #### 2. 如何安装配置编程语言的开发环境？
 
-解答：米扑代理使用示例，全部由米扑科技编写代码、测试验证，因此米扑科技搭建了全部的开发测试环境，详细配置编程语言的开发环境，请参考米扑博客：[http://blog.mimvp.com](http://blog.mimvp.com)
+解答：米扑代理使用示例，全部由米扑科技编写代码、测试验证，因此米扑科技搭建了全部的开发测试环境，详细配置编程语言的开发环境，请参考米扑博客：[https://blog.mimvp.com](https://blog.mimvp.com)
 
 * <a target="_blank" href="http://blog.mimvp.com/2017/09/autohotkey-an-zhuang-yu-kai-fa/">AutoHotkey 安装与开发</a>
 * <a target="_blank" href="http://blog.mimvp.com/2017/08/python-scrapy-an-zhuang-yu-kai-fa/">Python scrapy 安装与开发</a>
