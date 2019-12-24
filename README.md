@@ -379,10 +379,10 @@ sudo reboot
 ' 2017-07-28
 ' 
 ' 易语言的安装与开发，请参考米扑博客：
-' http://blog.mimvp.com/2017/08/yi-yu-yan-de-an-zhuang-yu-kai-fa/
+' https://blog.mimvp.com/2017/08/yi-yu-yan-de-an-zhuang-yu-kai-fa/
 ' 
 ' 易语言的网络编程和代理示例，请参考米扑博客，附有源代码：
-' http://blog.mimvp.com/2017/08/yi-yu-yan-de-wang-luo-bian-cheng-he-dai-li-shi-li/
+' https://blog.mimvp.com/2017/08/yi-yu-yan-de-wang-luo-bian-cheng-he-dai-li-shi-li/
 
 
 ' 变量声明（表格）
